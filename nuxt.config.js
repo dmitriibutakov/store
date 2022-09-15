@@ -33,6 +33,25 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: "AIzaSyCjEfIHCERfIpPT8v0ZPBS5nUJhxtyBW5w",
+          authDomain: "app-istore.firebaseapp.com",
+          databaseURL: "https://app-istore-default-rtdb.firebaseio.com",
+          projectId: "app-istore",
+          storageBucket: "app-istore.appspot.com",
+          messagingSenderId: "997479489249",
+          appId: "1:997479489249:web:33e213f6b25f1a4bba61a0",
+          measurementId: "G-WV97MH5JY7"
+        },
+        services: {
+          database: {
+          }
+        }
+      }
+    ]
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

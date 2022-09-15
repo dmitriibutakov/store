@@ -1,20 +1,34 @@
 export const state = () => ({
-    products: [state.product, state.product, state.product],
-    product: {
-        img: "https://mega.nz/file/AkVmQSZA#OR__8bmDK9z4_-1mGAKFug_JHOEYP3aMxdRtv65l-_A",
-        name: "phoeeeene",
-        about: "some about phone",
-        price: 333
-    }
+    products: [],
+    loading: false,
+    error: "",
 })
 
 export const actions = {
-
+    async fetchProducts({commit}) {
+        try {
+            commit('SET_LOADING', true)
+            let result;
+            await this.$fire.database
+                .ref(`products`)
+                .on("value", (e) => {
+                    console.log(e.val())
+                    commit('SET_PRODUCTS', result)
+                    commit('SET_LOADING', false)
+                })
+        } catch (error) {
+            commit('SET_ERROR', error.message)
+        }
+    }
 }
 
 export const getters = {
     getProducts: state => state.products,
+    getLoading: state => state.loading,
+    getError: state => state.error,
 }
 export const mutations = {
     SET_PRODUCTS: (state, products) => state.products = products,
+    SET_LOADING: (state, value) => state.isLoading = value,
+    SET_ERROR: (state, error) => state.error = error,
 }
