@@ -1,7 +1,8 @@
 <template>
-  <ul class="greeting__carousel">
-    <li :style="{'background-image': `url(${images[count]})`}"></li>
-  </ul>
+<!--  <ul class="greeting__carousel">-->
+<!--    <li :style="{'background-image': `url(${images[count]})`}"></li>-->
+<!--  </ul>-->
+  <img src="https://firebasestorage.googleapis.com/v0/b/app-istore.appspot.com/o/carousel2.jpg?alt=media&token=170cd071-f147-4647-974e-c74db0b1783d" alt="sfsf">
 </template>
 
 <script>
@@ -10,9 +11,9 @@ export default {
     return {
       count: 0,
       images: [
-        "/images/carousel0.jpg",
-        "/images/carousel1.jpg",
-        "/images/carousel3.jpg",
+        "/images/airpods.jpg",
+        "/images/imac.jpg",
+        "/images/ipad.jpg",
         "/images/carousel4.jpg",
         "/images/carousel5.jpg",
         "/images/carousel6.jpg",

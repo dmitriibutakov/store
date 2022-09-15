@@ -6,10 +6,10 @@
       <span></span>
     </div>
     <nav class="navigate">
-      <div class="link">HOME</div>
-      <div class="link">SEARCH</div>
-      <div class="link">CONTACTS</div>
-      <div class="link">ABOUT</div>
+      <div class="link"><nuxt-link to="/">HOME</nuxt-link></div>
+      <div class="link"><nuxt-link to="store">OUR STORE</nuxt-link></div>
+      <div class="link"><nuxt-link to="contacts">CONTACTS</nuxt-link></div>
+      <div class="link"><nuxt-link to="about">ABOUT</nuxt-link></div>
     </nav>
   </div>
 </template>
@@ -89,7 +89,7 @@ export default {
 
     .link {
       color: inherit;
-      transition: all .5s ease-in-out;
+      transition: all .5s ease;
       font-weight: 600;
       cursor: pointer;
     }
@@ -103,6 +103,7 @@ export default {
 .navigation {
   right: 0;
   background-color: rgba(255, 255, 255, 0.94);
+  border-left: 1px solid rgba(114, 112, 112, 0.4);
 }
 
 .navigation__hidden {

@@ -1,15 +1,16 @@
 <template>
-  <div class="products">
-    <Product :product="product"/>
+  <div class="products" >
+    <Product :product="getProducts[0]"/>
   </div>
 </template>
 
 <script>
+import {mapGetters} from "vuex";
 export default {
-  data() {
-    return {
-      product: {img: "url('images/carousel1.jpg')", name: "phone", about: "some about phone", price: 333}
-    }
+  computed: {
+    ...mapGetters({
+      getProducts: "getProducts"
+    })
   }
 }
 </script>

@@ -5,7 +5,7 @@
     <p class="greeting__about">The latest.
       <br> Take a look at what’s new,
       <br>
-      <nuxt-link to="/latest"> &#62; right now.</nuxt-link>
+      <nuxt-link to="latest"> &#62; right now.</nuxt-link>
     </p>
   </div>
 </template>
@@ -37,6 +37,7 @@ export default {
     color: #6e6e73;
     font-size: 20px;
     font-weight: 700;
+    line-height: 1.2;
     width: 100%;
   }
 }
