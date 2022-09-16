@@ -15,7 +15,7 @@
 export default {
   props: {
     product: Object
-  }
+  },
 }
 </script>
 
@@ -25,18 +25,19 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  padding:30px;
+  padding: 20px;
+  max-width: 320px;
   border-radius: 18px;
   transition: all .4s ease-in-out;
-  box-shadow: 2px 4px 12px rgba(0,0,0,.08);
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, .08);
 
   & > * {
     margin-bottom: 10px;
   }
 
   &:hover {
-    box-shadow: 2px 4px 16px rgba(0,0,0,.16);
-    transform: scale3d(1.01,1.01,1.01);
+    box-shadow: 2px 4px 16px rgba(0, 0, 0, .16);
+    transform: scale3d(1.01, 1.01, 1.01);
   }
 
   .product__img {
@@ -46,9 +47,9 @@ export default {
     justify-content: center;
 
     img {
-      margin: 0 auto ;
-      width: 230px;
-      height: 230px;
+      margin: 0 auto;
+      height: 200px;
+      width: 200px;
     }
   }
 
@@ -61,7 +62,8 @@ export default {
 
   .product__about {
     font-weight: 500;
-    color: #bf4800;
+    color: #464646;
+    font-size: 12px;
   }
 
   .product__price {

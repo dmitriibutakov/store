@@ -8,7 +8,18 @@
     <Footer/>
   </div>
 </template>
+<script>
+import {mapActions} from "vuex";
 
+export default {
+  methods: {
+    ...mapActions({fetchProducts: "fetchProducts"}),
+  },
+  mounted() {
+    this.fetchProducts()
+  }
+}
+</script>
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
 
@@ -85,6 +96,7 @@ h6 {
   overflow: hidden;
 
   .main {
+    margin: 0 10px;
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;

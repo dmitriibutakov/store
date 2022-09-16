@@ -1,25 +1,30 @@
 <template>
-  <div class="greeting__page">
+  <Preloader v-if="getLoading"/>
+  <div v-else class="greeting__page">
     <h1 class="greeting__title">The best way to buy the products you love.</h1>
-    <Carousel :products="getProducts"/>
+    <Carousel :products="getImagesFromProducts"/>
     <p class="greeting__about">The latest.
       <br> Take a look at what’s new,
       <br>
-      <nuxt-link to="latest"> &#62; right now.</nuxt-link>
+      <nuxt-link to="shop"> &#62; right now.</nuxt-link>
     </p>
   </div>
 </template>
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+
 export default {
   name: "IndexPage",
   methods: {
     ...mapActions({fetchProducts: "fetchProducts"}),
   },
   computed: {
-    ...mapGetters({getProducts: "getProducts"})
+    ...mapGetters({getProducts: "getProducts",
+      getLoading: "getLoading",
+      getImagesFromProducts: "getImagesFromProducts"})
   },
+
   mounted() {
     this.fetchProducts()
   }

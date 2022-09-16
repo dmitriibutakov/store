@@ -1,6 +1,7 @@
 <template>
   <ul class="greeting__carousel">
-    <li :style="{'background-image': ``}"></li>
+    <li v-if="products.length > 1"
+        :style="{backgroundImage: `url(${products[count]})`}"></li>
   </ul>
 </template>
 
@@ -11,18 +12,20 @@ export default {
   },
   data() {
     return {
-      count: 0
+      count: 1
     }
   },
   methods: {
     countSlide(num, arr) {
-      setInterval(() => {
-        if (this.count === this.products.length - 1) {
-          return this.count = 0
+      let that = this
+      setTimeout(function tick() {
+        if (that.count === that.products.length - 1) {
+          that.count = 0
         } else {
-          return this.count++
+          that.count++
         }
-      }, 5000)
+        return setTimeout(tick, 5000)
+      }, 4000)
     }
   },
   mounted() {
@@ -62,7 +65,7 @@ export default {
     }
 
     100% {
-      translate: 120%;
+      translate: 130%;
     }
   }
 

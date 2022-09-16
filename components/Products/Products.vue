@@ -1,17 +1,16 @@
 <template>
-  <div class="products" >
-    <Product :product="getProducts[0]"/>
+  <div class="products">
+    <Product v-for="(prod, index) in products"
+             :product="prod"
+             :key="index"/>
   </div>
 </template>
 
 <script>
-import {mapGetters} from "vuex";
 export default {
-  computed: {
-    ...mapGetters({
-      getProducts: "getProducts"
-    })
-  }
+  props: {
+    products: Array
+  },
 }
 </script>
 

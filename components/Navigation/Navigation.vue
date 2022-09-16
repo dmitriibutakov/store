@@ -7,7 +7,7 @@
     </div>
     <nav class="navigate">
       <div class="link"><nuxt-link to="/">HOME</nuxt-link></div>
-      <div class="link"><nuxt-link to="store">OUR STORE</nuxt-link></div>
+      <div class="link"><nuxt-link to="shop">OUR STORE</nuxt-link></div>
       <div class="link"><nuxt-link to="contacts">CONTACTS</nuxt-link></div>
       <div class="link"><nuxt-link to="about">ABOUT</nuxt-link></div>
     </nav>
