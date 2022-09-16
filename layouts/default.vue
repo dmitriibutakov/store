@@ -9,13 +9,16 @@
   </div>
 </template>
 <script>
+import Footer from "~/components/Footer/Footer";
 import {mapActions} from "vuex";
 
 export default {
+  components: {Footer},
   methods: {
     ...mapActions({fetchProducts: "fetchProducts"}),
   },
   mounted() {
+    console.log('mounted')
     this.fetchProducts()
   }
 }
@@ -108,10 +111,3 @@ h6 {
   }
 }
 </style>
-<script>
-import Footer from "~/components/Footer/Footer";
-
-export default {
-  components: {Footer}
-}
-</script>

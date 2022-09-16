@@ -2,7 +2,9 @@
   <Preloader v-if="getLoading"/>
   <div v-else class="greeting__page">
     <h1 class="greeting__title">The best way to buy the products you love.</h1>
-    <Carousel :products="getImagesFromProducts"/>
+    <nuxt-link to="shop">
+      <Carousel :products="getImagesFromProducts"/>
+    </nuxt-link>
     <p class="greeting__about">The latest.
       <br> Take a look at what’s new,
       <br>
@@ -12,22 +14,17 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex";
+import {mapGetters} from "vuex";
 
 export default {
   name: "IndexPage",
-  methods: {
-    ...mapActions({fetchProducts: "fetchProducts"}),
-  },
   computed: {
-    ...mapGetters({getProducts: "getProducts",
+    ...mapGetters({
+      getProducts: "getProducts",
       getLoading: "getLoading",
-      getImagesFromProducts: "getImagesFromProducts"})
+      getImagesFromProducts: "getImagesFromProducts"
+    })
   },
-
-  mounted() {
-    this.fetchProducts()
-  }
 }
 </script>
 <style lang="scss">

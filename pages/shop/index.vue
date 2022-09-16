@@ -1,23 +1,30 @@
 <template>
+
   <Preloader v-if="getLoading"/>
-  <Products v-else :products="getProducts"/>
+  <div v-else>
+    <Products :products="getPortionProducts"/>
+    <button @click="fetchPortionNumbers()">show more</button>
+  </div>
 </template>
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+
 export default {
-  methods: {
-    ...mapActions({fetchProducts: "fetchProducts"}),
+  data() {
+    return {
+      portionCount: 4,
+    }
   },
   computed: {
     ...mapGetters({
-      getProducts: "getProducts",
+      getPortionProducts: "getPortionProducts",
       getLoading: "getLoading"
     }),
   },
-  mounted() {
-    this.fetchProducts()
-  }
+  methods: {
+    ...mapActions({fetchPortionNumbers: "fetchPortionNumbers"}),
+  },
 }
 </script>
 
