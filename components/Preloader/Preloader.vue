@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 #preloader-wrapper {
   position: fixed;
   top: 0;

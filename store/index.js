@@ -4,7 +4,6 @@ export const state = () => ({
     error: "",
     imagesFromProducts: [],
     portionProducts: [],
-    minPortion: 0,
     maxPortion: 4,
 })
 
@@ -39,7 +38,7 @@ export const getters = {
     getLoading: state => state.loading,
     getError: state => state.error,
     getImagesFromProducts: state => state.imagesFromProducts,
-    getPortionProducts: state => state.portionProducts
+    getPortionProducts: state => state.portionProducts,
 }
 export const mutations = {
     SET_PRODUCTS: (state, products) => {

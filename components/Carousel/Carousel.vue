@@ -34,7 +34,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .greeting__carousel {
   height: 300px;
   width: 300px;

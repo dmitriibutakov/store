@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .product {
   display: flex;
   flex-direction: column;
@@ -73,6 +73,15 @@ export default {
     font-size: 14px;
     color: #1d1d1f;
     opacity: .9;
+
+    .product__add {
+      background-color: #006edb;
+      font-size: 17px;
+      padding: 8px 16px;
+      border-radius: 98px;
+      color: #fff;
+      transition: all .4s ease-in-out;
+    }
   }
 }
 </style>

@@ -27,7 +27,7 @@ export default {
   },
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .greeting__page {
   padding: 0 5px;
   display: flex;
@@ -40,6 +40,7 @@ export default {
   }
 
   .greeting__title {
+    margin-top: 40px;
     font-size: 28px;
     font-weight: 700;
   }

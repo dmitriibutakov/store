@@ -1,26 +1,29 @@
 <template>
-<footer class="footer">
-  <p>@2022 dmitryload GitHub</p> <nuxt-link to="/contacts">Contacts</nuxt-link>
-</footer>
+  <footer class="footer">
+    <p>@2022 dmitryload GitHub</p>
+    <nuxt-link to="/contacts">Contacts</nuxt-link>
+  </footer>
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .footer {
+  margin-top: 20px;
+  border-top: 1px solid rgba(75, 75, 75, 0.222);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 0;
+  padding: 20px 0;
   font-size: 14px;
-  &>:first-child {
+
+  & > :first-child {
     margin-right: 10px;
   }
-  &>:last-child {
+
+  & > :last-child {
     font-weight: 700;
   }
 }
