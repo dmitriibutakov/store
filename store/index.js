@@ -4,7 +4,7 @@ export const state = () => ({
     error: "",
     imagesFromProducts: [],
     portionProducts: [],
-    maxPortion: 4,
+    portionNumber: 0,
     activeFilter: "All Products",
     isShowMenu: false,
 })
@@ -40,6 +40,7 @@ export const actions = {
     },
     toggleMenu({commit}, menu) {
         commit('TOGGLE_MENU', menu)
+        commit('SET_PORTION_NUMBER', 0)
     }
 }
 
@@ -50,28 +51,31 @@ export const getters = {
     getImagesFromProducts: state => state.imagesFromProducts,
     getPortionProducts: state => state.portionProducts,
     getActiveFilter: state => state.activeFilter,
-    getIsShowMenu: state => state.isShowMenu
+    getIsShowMenu: state => state.isShowMenu,
+    getPortionNumber: state => state.portionNumber
 }
 export const mutations = {
     SET_PRODUCTS: (state, products) => {
         state.products = products
         console.log("products")
-    },
+},
     SET_LOADING: (state, value) => state.loading = value,
     SET_ERROR: (state, error) => state.error = error,
     SET_PORTION_PRODUCTS: (state) => {
+        state.portionNumber += 4
         if (state.activeFilter === "All Products" ) {
             state.portionProducts = state.products
-            .slice(state.minPortion, state.maxPortion)
+            .slice(0, state.portionNumber)
+            
         } else {
             state.portionProducts = state.products
             .filter(el => el.name.toLowerCase()
             .includes(state.activeFilter.toLowerCase()))
-            .slice(state.minPortion, state.maxPortion)
+            .slice(0, state.portionNumber)
         }
-        state.maxPortion += state.maxPortion
     },
     SET_IMAGES_FROM_PRODUCTS: (state, image) => state.imagesFromProducts.push(image),
     SET_ACTIVE_FILTER: (state, filter) => state.activeFilter = filter,
-    TOGGLE_MENU: (state, isShow) => state.isShowMenu = isShow
+    TOGGLE_MENU: (state, isShow) => state.isShowMenu = isShow,
+    SET_PORTION_NUMBER: (state, num) => state.portionNumber = num
 }

@@ -5,10 +5,11 @@
     <ol class="shopPage__menu">
       <li>
         <MenuList/>
+        {{getPortionNumber}}
       </li>
     </ol>
     <Products :products="getPortionProducts" :key="getActiveFilter"/>
-    <button :disabled="getPortionProducts.length >= getProducts.length"
+    <button :disabled="getPortionProducts.length < getPortionNumber"
             class="shopPage__brn"
             @click="fetchPortionProducts">show more
     </button>
@@ -24,7 +25,8 @@ export default {
       getProducts: "getProducts",
       getPortionProducts: "getPortionProducts",
       getLoading: "getLoading",
-      getActiveFilter: "getActiveFilter"
+      getActiveFilter: "getActiveFilter",
+      getPortionNumber: "getPortionNumber"
     }),
   },
   methods: {
