@@ -5,6 +5,8 @@ export const state = () => ({
     imagesFromProducts: [],
     portionProducts: [],
     maxPortion: 4,
+    activeFilter: "All Products",
+    isShowMenu: false,
 })
 
 export const actions = {
@@ -27,9 +29,17 @@ export const actions = {
             commit('SET_ERROR', error.message)
         }
     },
-    fetchPortionNumbers({commit}) {
+    fetchPortionProducts({commit}) {
         console.log("portion numbers")
         commit('SET_PORTION_PRODUCTS')
+    },
+    setFilteredProducts({commit, dispatch}, event) {
+        commit('SET_ACTIVE_FILTER', event.currentTarget.innerText)
+        commit('TOGGLE_MENU', false)
+        dispatch('fetchPortionProducts')
+    },
+    toggleMenu({commit}, menu) {
+        commit('TOGGLE_MENU', menu)
     }
 }
 
@@ -39,6 +49,8 @@ export const getters = {
     getError: state => state.error,
     getImagesFromProducts: state => state.imagesFromProducts,
     getPortionProducts: state => state.portionProducts,
+    getActiveFilter: state => state.activeFilter,
+    getIsShowMenu: state => state.isShowMenu
 }
 export const mutations = {
     SET_PRODUCTS: (state, products) => {
@@ -48,8 +60,18 @@ export const mutations = {
     SET_LOADING: (state, value) => state.loading = value,
     SET_ERROR: (state, error) => state.error = error,
     SET_PORTION_PRODUCTS: (state) => {
-        state.portionProducts = state.products.slice(state.minPortion, state.maxPortion)
+        if (state.activeFilter === "All Products" ) {
+            state.portionProducts = state.products
+            .slice(state.minPortion, state.maxPortion)
+        } else {
+            state.portionProducts = state.products
+            .filter(el => el.name.toLowerCase()
+            .includes(state.activeFilter.toLowerCase()))
+            .slice(state.minPortion, state.maxPortion)
+        }
         state.maxPortion += state.maxPortion
     },
     SET_IMAGES_FROM_PRODUCTS: (state, image) => state.imagesFromProducts.push(image),
+    SET_ACTIVE_FILTER: (state, filter) => state.activeFilter = filter,
+    TOGGLE_MENU: (state, isShow) => state.isShowMenu = isShow
 }

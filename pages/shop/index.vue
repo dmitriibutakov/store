@@ -7,10 +7,10 @@
         <MenuList/>
       </li>
     </ol>
-    <Products :products="getPortionProducts"/>
+    <Products :products="getPortionProducts" :key="getActiveFilter"/>
     <button :disabled="getPortionProducts.length >= getProducts.length"
             class="shopPage__brn"
-            @click="fetchPortionNumbers">show more
+            @click="fetchPortionProducts">show more
     </button>
   </div>
 </template>
@@ -24,11 +24,12 @@ export default {
       getProducts: "getProducts",
       getPortionProducts: "getPortionProducts",
       getLoading: "getLoading",
+      getActiveFilter: "getActiveFilter"
     }),
   },
   methods: {
-    ...mapActions({fetchPortionNumbers: "fetchPortionNumbers"}),
-  },
+    ...mapActions({fetchPortionProducts: "fetchPortionProducts"}),
+  }
 }
 </script>
 

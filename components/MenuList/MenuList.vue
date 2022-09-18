@@ -1,21 +1,22 @@
 <template>
   <div class="shopPage__menu_item"
-       @click.stop="showMenu = !showMenu">{{ activeFilter }}
-  <ul class="shopPage__filter" v-if="showMenu">
-    <li @click.stop v-for="(data, index) in shopFilters"
-        :key="index" @click="setMenu"
+   @click.stop="toggleMenu(!getIsShowMenu)">{{ getActiveFilter }}
+    <ul class="shopPage__filter"
+     v-if="getIsShowMenu">
+      <li @click.stop 
+      v-for="(data, index) in shopFilters"
+       :key="index" @click="(event) => setFilteredProducts(event)"
         class="shopPage__filter_item">{{ data }}
-    </li>
-  </ul>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+  import {mapActions, mapGetters} from "vuex";
 export default {
   data() {
     return {
-      activeFilter: "All Products",
-      showMenu: false,
       shopFilters: ["All Products",
         "iPhone",
         "MacBook",
@@ -24,12 +25,18 @@ export default {
         "Accessories"]
     }
   },
+  computed: {
+    ...mapGetters({
+      getIsShowMenu: "getIsShowMenu",
+      getActiveFilter: "getActiveFilter"
+    })
+  },
   methods: {
-    setMenu(e) {
-      this.activeFilter = e.currentTarget.innerText
-      this.showMenu = false
-    }
-  }
+    ...mapActions({
+      setFilteredProducts: "setFilteredProducts",
+      toggleMenu: "toggleMenu"
+    }),
+  },
 }
 </script>
 
@@ -41,6 +48,7 @@ export default {
   cursor: pointer;
   background-color: rgba(220, 220, 220, 0.75);
   color: #3a3a3a;
+
   .shopPage__filter {
     position: absolute;
     width: 100%;
@@ -67,6 +75,7 @@ export default {
     0% {
       opacity: 0;
     }
+
     100% {
       opacity: .8;
     }
