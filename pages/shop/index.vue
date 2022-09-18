@@ -5,7 +5,6 @@
     <ol class="shopPage__menu">
       <li>
         <MenuList/>
-        {{getPortionNumber}}
       </li>
     </ol>
     <Products :products="getPortionProducts" :key="getActiveFilter"/>
@@ -45,6 +44,7 @@ export default {
   .shopPage__menu {
     display: flex;
     margin-top: 10px;
+    margin-bottom: 10px;
     width: calc(100% + 20px);
   }
 
