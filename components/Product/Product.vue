@@ -6,7 +6,7 @@
     <h1 class="product__name">{{ product.name }}</h1>
     <p class="product__about">{{ product.about }}</p>
     <div class="product__price"> $ {{ product.price }}.00
-      <Button :ttle="'add'"/>
+      <Button :name="'add'"/>
     </div>
   </div>
 </template>

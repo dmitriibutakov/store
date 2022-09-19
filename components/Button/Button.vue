@@ -1,10 +1,10 @@
 <template>
-   <button class="button">{{ttle}}</button>
+   <button class="button">{{name}}</button>
 </template>
 
 <script>
 export default {
-   props: { ttle: String }
+   props: { name: String }
 }
 </script>
 
