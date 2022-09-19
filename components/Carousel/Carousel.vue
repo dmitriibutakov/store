@@ -7,9 +7,6 @@
 
 <script>
 export default {
-  props: {
-    products: Array
-  },
   data() {
     return {
       count: 1

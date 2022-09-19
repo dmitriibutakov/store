@@ -69,7 +69,7 @@ export const mutations = {
             
         } else {
             state.portionProducts = state.products
-            .filter(el => el.name.toLowerCase()
+            .filter(el => el.filter
             .includes(state.activeFilter.toLowerCase()))
             .slice(0, state.portionNumber)
         }

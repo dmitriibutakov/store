@@ -6,16 +6,18 @@
     <h1 class="product__name">{{ product.name }}</h1>
     <p class="product__about">{{ product.about }}</p>
     <div class="product__price"> $ {{ product.price }}.00
-      <button class="product__add">Add</button>
+      <Button :ttle="'add'"/>
     </div>
   </div>
 </template>
 
 <script>
+import Button from '../Button/Button.vue';
 export default {
-  props: {
-    product: Object
-  },
+    props: {
+        product: Object
+    },
+    components: { Button }
 }
 </script>
 
@@ -74,15 +76,6 @@ export default {
     font-size: 14px;
     color: #1d1d1f;
     opacity: .9;
-
-    .product__add {
-      background-color: #006edb;
-      font-size: 17px;
-      padding: 8px 16px;
-      border-radius: 98px;
-      color: #fff;
-      transition: all .4s ease-in-out;
-    }
   }
 }
 </style>
