@@ -1,12 +1,12 @@
 <template>
    <div :class="screen ? 'screen' : 'screen2' ">
       <h1 class="screen__title">{{title}}</h1>
-      <h2 :class="screen ? 'screen__about' : 'screen__about'">
+      <h2 :class="screen ? 'screen__about' : 'screen2__about'">
          {{about}}
       </h2>
       <p class="screen__description">{{description}}</p>
-      <Button :name="'buy'" />
-      <img class="screen__img" :src="image" alt="product">
+      <Button :name="'buy'"><nuxt-link to="shop">Buy</nuxt-link></Button>
+      <img class="screen__img" :src="image" alt="product" data-not-lazy>
    </div>
 </template>
 
@@ -23,7 +23,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.screen, .screen2 {
+.screen,
+.screen2 {
    padding: 40px 5px 0;
    display: flex;
    flex-direction: column;
@@ -33,6 +34,7 @@ export default {
    width: calc(100% + 20px);
    height: 100vh;
    overflow: hidden;
+
    &>*:not(:last-child) {
       margin-bottom: 13px;
    }
@@ -48,6 +50,7 @@ export default {
       font-size: 40px;
       font-weight: 600;
       background-clip: text;
+      padding: 0 10px;
    }
 
    .screen__about {
@@ -67,12 +70,15 @@ export default {
       bottom: 0;
       width: 100%;
       max-width: 400px;
+      min-height: 200px;
    }
 }
+
 .screen {
    color: #f5f5f7;
    background-color: #000;
 }
+
 .screen2 {
    background-color: #fff;
 }
