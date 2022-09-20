@@ -6,27 +6,26 @@
       <span></span>
     </div>
     <nav class="navigate">
-      <div class="link">
-        <nuxt-link to="/">HOME</nuxt-link>
-      </div>
-      <div class="link">
-        <nuxt-link to="shop">OUR STORE</nuxt-link>
-      </div>
-      <div class="link">
-        <nuxt-link to="contacts">CONTACTS</nuxt-link>
-      </div>
-      <div class="link">
-        <nuxt-link to="about">ABOUT</nuxt-link>
-      </div>
+        <a @click="handleClick('/')" class="link">HOME</a>
+        <a @click="handleClick('shop')" class="link">OUR STORE</a>
+        <a @click="handleClick('contacts')" class="link">CONTACTS</a>
+        <a @click="handleClick('about')" class="link">ABOUT</a>
     </nav>
   </div>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
       active: false
+    }
+  },
+  methods: {
+    handleClick (link) {
+      this.active = false
+      this.$router.push(link)
     }
   }
 }
