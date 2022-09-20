@@ -28,7 +28,7 @@ export default {
     return {
       active: false
     }
-  },
+  }
 }
 </script>
 
@@ -92,7 +92,7 @@ export default {
     align-items: end;
     width: 100px;
 
-    & > *:not(:last-child) {
+    &>*:not(:last-child) {
       margin-bottom: 20px;
     }
 

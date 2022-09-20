@@ -5,7 +5,9 @@
          {{about}}
       </h2>
       <p class="screen__description">{{description}}</p>
-      <Button :name="'buy'"><nuxt-link to="shop">Buy</nuxt-link></Button>
+      <Button :name="'buy'">
+         <nuxt-link to="shop">Buy</nuxt-link>
+      </Button>
       <img class="screen__img" :src="image" alt="product" data-not-lazy>
    </div>
 </template>
@@ -70,7 +72,7 @@ export default {
       bottom: 0;
       width: 100%;
       max-width: 400px;
-      min-height: 200px;
+      min-height: 300px;
    }
 }
 
