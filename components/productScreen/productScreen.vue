@@ -24,13 +24,12 @@ export default {
       description: String,
       image: String,
       screen: Boolean,
-      filter: String
    },
    methods: {
       ...mapActions({ routeToShop: "routeToShop" }),
       handleClick() {
          this.$router.push("shop")
-         this.routeToShop(this.filter)
+         this.routeToShop(this.title.split(" ")[0].toLowerCase())
       }
    }
 }
