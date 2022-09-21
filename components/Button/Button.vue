@@ -1,14 +1,19 @@
 <template>
-   <button class="button"><slot>{{name}}</slot></button>
+   <button @click="onClick" class="button">
+      <slot>{{name}}</slot>
+   </button>
 </template>
 
 <script>
 export default {
-   props: { name: String }
+   props: {
+      name: String,
+      onClick: Function
+   }
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .button {
    background-color: #006edb;
    font-size: 17px;

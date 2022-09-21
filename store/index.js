@@ -41,6 +41,10 @@ export const actions = {
     toggleMenu({commit}, menu) {
         commit('TOGGLE_MENU', menu)
         commit('SET_PORTION_NUMBER', 0)
+    },
+    routeToShop({commit, dispatch}, name) {
+        commit('SET_ACTIVE_FILTER', name)  
+        dispatch('fetchPortionProducts')
     }
 }
 

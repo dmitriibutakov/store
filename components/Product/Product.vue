@@ -6,7 +6,7 @@
     <h1 class="product__name">{{ product.name }}</h1>
     <p class="product__about">{{ product.about }}</p>
     <div class="product__price"> $ {{ product.price }}.00
-      <Button :name="'add'"/>
+      <Button :name="'add'" :onClick="setClick"/>
     </div>
   </div>
 </template>
@@ -17,7 +17,12 @@ export default {
     props: {
         product: Object
     },
-    components: { Button }
+    components: { Button },
+    methods: {
+      setClick() {
+        console.log('click')
+      }
+    }
 }
 </script>
 
