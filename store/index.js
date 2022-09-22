@@ -3,6 +3,7 @@ export const state = () => ({
     portionProducts: [],
     products: [],
     about: [],
+    cart: [],
     activeFilter: "All Products",
     isShowMenu: false,
     portionNumber: 0,
@@ -61,10 +62,22 @@ export const actions = {
     routeToShop({commit, dispatch}, name) {
         commit('SET_ACTIVE_FILTER', name)
         dispatch('fetchPortionProducts')
+    },
+    getCartFromStorage({commit}) {
+        for (let key in localStorage) {
+            if (!localStorage.hasOwnProperty(key)) {
+                continue;
+            }
+            commit('SET_CART_FROM_STORAGE', localStorage.getItem(key))
+        }
+    },
+    setCartFromStorage({commit}, product) {
+        localStorage.setItem(`${product.name}`, JSON.stringify(product))
     }
 }
 
 export const getters = {
+    getCart: state => state.cart,
     getError: state => state.error,
     getAbout: state => state.about,
     getLoading: state => state.loading,
@@ -82,9 +95,15 @@ export const mutations = {
     TOGGLE_MENU: (state, isShow) => state.isShowMenu = isShow,
     SET_PRODUCTS: (state, products) => {
         state.products = products
-        console.log("products")
     },
     SET_ACTIVE_FILTER: (state, filter) => state.activeFilter = filter,
+    SET_CART_FROM_STORAGE: (state, prod) => {
+        const item = JSON.parse(prod)
+        console.log(item)
+        if (typeof(item) === "object" && item !== null) {
+            state.cart.push(item)
+        }
+    },
     SET_PORTION_NUMBER: (state, num) => state.portionNumber = num,
     SET_PORTION_PRODUCTS: (state) => {
         state.portionNumber += 4

@@ -6,13 +6,14 @@
     <h1 class="product__name">{{ product.name }}</h1>
     <p class="product__about">{{ product.about }}</p>
     <div class="product__price"> $ {{ product.price }}.00
-      <Button :name="'add'" :onClick="setClick"/>
+      <Button :name="'add'" :onClick="clickHandler"/>
     </div>
   </div>
 </template>
 
 <script>
 import Button from '../Button/Button.vue';
+import {mapActions} from "vuex";
 
 export default {
   props: {
@@ -20,8 +21,9 @@ export default {
   },
   components: {Button},
   methods: {
-    setClick() {
-      console.log('click')
+    ...mapActions({setCartFromStorage: "setCartFromStorage"}),
+    clickHandler() {
+      this.setCartFromStorage(this.product)
     }
   }
 }
