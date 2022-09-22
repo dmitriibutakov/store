@@ -4,7 +4,7 @@
     <CartBody :getCart="getCart"/>
     <div class="cart__total">
       <h4 class="cart__total_name">Total</h4>
-      <p class="cart__total_price">59.00 $</p>
+      <p class="cart__total_price">{{ getCart.reduce((a, b) => a + b.price, 0) }}.00 $</p>
     </div>
     <div class="cart__button">
       <Button :onClick="showClick">order</Button>
@@ -13,16 +13,20 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   computed: {
     ...mapGetters({getCart: "getCart"})
   },
   methods: {
+    ...mapActions({ getCartFromStorage: "getCartFromStorage"}),
     showClick() {
       console.log("click")
     }
+  },
+  mounted() {
+    this.getCartFromStorage()
   }
 }
 </script>

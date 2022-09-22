@@ -47,7 +47,6 @@ export const actions = {
         }
     },
     fetchPortionProducts({commit}) {
-        console.log("portion numbers")
         commit('SET_PORTION_PRODUCTS')
     },
     setFilteredProducts({commit, dispatch}, event) {
@@ -64,6 +63,7 @@ export const actions = {
         dispatch('fetchPortionProducts')
     },
     getCartFromStorage({commit}) {
+        commit('CLEAR_CART')
         for (let key in localStorage) {
             if (!localStorage.hasOwnProperty(key)) {
                 continue;
@@ -73,7 +73,12 @@ export const actions = {
     },
     setCartFromStorage({commit}, product) {
         localStorage.setItem(`${product.name}`, JSON.stringify(product))
-    }
+    },
+    deleteCartFromStorage({dispatch}, key) {
+        localStorage.removeItem(key)
+        dispatch("getCartFromStorage")
+    },
+
 }
 
 export const getters = {
@@ -91,6 +96,9 @@ export const getters = {
 export const mutations = {
     SET_ABOUT: (state, about) => state.about = about,
     SET_ERROR: (state, error) => state.error = error,
+    CLEAR_CART: (state) => {
+        state.cart = []
+    },
     SET_LOADING: (state, value) => state.loading = value,
     TOGGLE_MENU: (state, isShow) => state.isShowMenu = isShow,
     SET_PRODUCTS: (state, products) => {
@@ -99,7 +107,6 @@ export const mutations = {
     SET_ACTIVE_FILTER: (state, filter) => state.activeFilter = filter,
     SET_CART_FROM_STORAGE: (state, prod) => {
         const item = JSON.parse(prod)
-        console.log(item)
         if (typeof(item) === "object" && item !== null) {
             state.cart.push(item)
         }
@@ -119,5 +126,4 @@ export const mutations = {
         }
     },
     SET_IMAGES_FROM_PRODUCTS: (state, image) => state.imagesFromProducts.push(image),
-
 }

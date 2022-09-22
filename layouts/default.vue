@@ -18,7 +18,6 @@ export default {
     ...mapActions({fetchProducts: "fetchProducts"}),
   },
   mounted() {
-    console.log('mounted')
     this.fetchProducts()
   }
 }
