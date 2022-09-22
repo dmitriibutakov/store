@@ -11,7 +11,7 @@ export const state = () => ({
 })
 
 export const actions = {
-    async fetchProducts({ commit, state }) {
+    async fetchProducts({commit, state}) {
         try {
             commit('SET_LOADING', true)
             let result;
@@ -30,7 +30,7 @@ export const actions = {
             commit('SET_ERROR', error.message)
         }
     },
-    async fetchAbout({ commit, state }) {
+    async fetchAbout({commit, state}) {
         try {
             commit('SET_LOADING', true)
             let result;
@@ -45,20 +45,20 @@ export const actions = {
             commit('SET_ERROR', error.message)
         }
     },
-    fetchPortionProducts({ commit }) {
+    fetchPortionProducts({commit}) {
         console.log("portion numbers")
         commit('SET_PORTION_PRODUCTS')
     },
-    setFilteredProducts({ commit, dispatch }, event) {
+    setFilteredProducts({commit, dispatch}, event) {
         commit('SET_ACTIVE_FILTER', event.currentTarget.innerText)
         commit('TOGGLE_MENU', false)
         dispatch('fetchPortionProducts')
     },
-    toggleMenu({ commit }, menu) {
+    toggleMenu({commit}, menu) {
         commit('TOGGLE_MENU', menu)
         commit('SET_PORTION_NUMBER', 0)
     },
-    routeToShop({ commit, dispatch }, name) {
+    routeToShop({commit, dispatch}, name) {
         commit('SET_ACTIVE_FILTER', name)
         dispatch('fetchPortionProducts')
     }
@@ -100,5 +100,5 @@ export const mutations = {
         }
     },
     SET_IMAGES_FROM_PRODUCTS: (state, image) => state.imagesFromProducts.push(image),
-   
+
 }

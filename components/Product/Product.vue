@@ -13,16 +13,17 @@
 
 <script>
 import Button from '../Button/Button.vue';
+
 export default {
-    props: {
-        product: Object
-    },
-    components: { Button },
-    methods: {
-      setClick() {
-        console.log('click')
-      }
+  props: {
+    product: Object
+  },
+  components: {Button},
+  methods: {
+    setClick() {
+      console.log('click')
     }
+  }
 }
 </script>
 

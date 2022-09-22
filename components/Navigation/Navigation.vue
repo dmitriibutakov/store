@@ -6,10 +6,10 @@
       <span></span>
     </div>
     <nav class="navigate">
-        <a @click="handleClick('/')" class="link">HOME</a>
-        <a @click="handleClick('shop')" class="link">OUR STORE</a>
-        <a @click="handleClick('contacts')" class="link">CONTACTS</a>
-        <a @click="handleClick('about')" class="link">ABOUT</a>
+      <a @click="handleClick('/')" class="link">HOME</a>
+      <a @click="handleClick('shop')" class="link">OUR STORE</a>
+      <a @click="handleClick('contacts')" class="link">CONTACTS</a>
+      <a @click="handleClick('about')" class="link">ABOUT</a>
     </nav>
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
     }
   },
   methods: {
-    handleClick (link) {
+    handleClick(link) {
       this.active = false
       this.$router.push(link)
     }
@@ -91,7 +91,7 @@ export default {
     align-items: end;
     width: 100px;
 
-    &>*:not(:last-child) {
+    & > *:not(:last-child) {
       margin-bottom: 20px;
     }
 

@@ -2,16 +2,17 @@
   <Preloader v-if="getLoading"/>
   <div v-else class="aboutPage">
     <product-screen v-for="(data, index) in getAbout" :key="index" :title="data.title"
-    :about="data.about"
-    :description="data.description"
-    :image="data.image"
-    :screen="data.blackTheme"
+                    :about="data.about"
+                    :description="data.description"
+                    :image="data.image"
+                    :screen="data.blackTheme"
     />
   </div>
 </template>
 
 <script>
-  import {mapActions, mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
+
 export default {
   methods: {
     ...mapActions({fetchAbout: "fetchAbout"}),
@@ -21,7 +22,7 @@ export default {
     this.fetchAbout()
   },
   computed: {
-    ...mapGetters({ getAbout: "getAbout", getLoading: "getLoading"})
+    ...mapGetters({getAbout: "getAbout", getLoading: "getLoading"})
   }
 }
 </script>

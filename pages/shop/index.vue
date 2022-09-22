@@ -1,17 +1,17 @@
 <template>
 
-  <Preloader v-if="getLoading" />
+  <Preloader v-if="getLoading"/>
   <div class="shopPage" v-else>
-    <MenuList />
-    <Products :products="getPortionProducts" :key="getActiveFilter" />
+    <MenuList/>
+    <Products :products="getPortionProducts" :key="getActiveFilter"/>
     <button :disabled="getPortionProducts.length < getPortionNumber" class="shopPage__brn"
-      @click="fetchPortionProducts">show more
+            @click="fetchPortionProducts">show more
     </button>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   computed: {
@@ -24,7 +24,7 @@ export default {
     }),
   },
   methods: {
-    ...mapActions({ fetchPortionProducts: "fetchPortionProducts" }),
+    ...mapActions({fetchPortionProducts: "fetchPortionProducts"}),
   }
 }
 </script>
