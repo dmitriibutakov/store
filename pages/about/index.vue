@@ -1,17 +1,28 @@
 <template>
-  <div class="aboutPage">
-
-    <product-screen :title="'MacBook Air'"
-    :about="'Don’t take it lightly.'"
-    :description="'From $1199'"
-    :image="'images/macbookAir.jpg'"
-    :filter="'macbook'"
+  <Preloader v-if="getLoading"/>
+  <div v-else class="aboutPage">
+    <product-screen v-for="(data, index) in getAbout" :key="index" :title="data.title"
+    :about="data.about"
+    :description="data.description"
+    :image="data.image"
+    :screen="data.blackTheme"
     />
   </div>
 </template>
 
 <script>
+  import {mapActions, mapGetters} from "vuex";
 export default {
+  methods: {
+    ...mapActions({fetchAbout: "fetchAbout"}),
+  },
+  mounted() {
+    console.log('about')
+    this.fetchAbout()
+  },
+  computed: {
+    ...mapGetters({ getAbout: "getAbout", getLoading: "getLoading"})
+  }
 }
 </script>
 

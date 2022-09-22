@@ -93,8 +93,8 @@ export default {
       bottom: 0;
       width: 100%;
       min-width: 300px;
-      max-width: 500px;
-      max-height: 400px;
+      max-width: 550px;
+      max-height: 450px;
       min-height: 250px;
    }
 }
