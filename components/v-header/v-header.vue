@@ -20,6 +20,7 @@
   background-color: #fff;
   display: flex;
   justify-content: space-between;
+  z-index: 2;
 
   .header__name {
     font-size: 24px;

@@ -1,15 +1,15 @@
 <template>
   <div class="wrapper">
-    <Header/>
-    <Navigation/>
+    <v-header/>
+    <v-navigation/>
     <main class="main">
       <Nuxt/>
     </main>
-    <Footer/>
+    <v-footer/>
   </div>
 </template>
 <script>
-import Footer from "~/components/Footer/Footer";
+import Footer from "@/components/v-footer/v-footer";
 import {mapActions} from "vuex";
 
 export default {
@@ -23,80 +23,6 @@ export default {
 }
 </script>
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
-
-html,
-body {
-  font-family: 'Lato', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
-
-:focus,
-:active,
-:hover {
-  outline: none;
-}
-
-a,
-a:visited,
-a:focus,
-a:active,
-a:hover {
-  outline: none;
-  text-decoration: none;
-  color: #1a1c5b;
-}
-
-
-input,
-button,
-textarea {
-  font-family: inherit;
-}
-
-button {
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0);
-  font-size: 14px;
-}
-
-ol,
-ul,
-li {
-  list-style: none;
-}
-
-img {
-  vertical-align: top;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-}
-
-.wrapper {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-color: #e5e5e500;
-  color: #11142D;
-  overflow: hidden;
-
   .main {
     margin: 45px 10px 0 10px;
     flex: 1 1 auto;
@@ -105,8 +31,15 @@ h6 {
     align-items: center;
     justify-content: center;
   }
-
+  .wrapper {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #e5e5e500;
+    color: #11142D;
+    overflow: hidden;
+  }
   .footer {
   }
-}
 </style>

@@ -87,7 +87,7 @@ export default {
     display: flex;
     margin-left: 5px;
     flex-direction: column;
-    align-items: end;
+    align-items: flex-end;
     width: 100px;
 
     & > *:not(:last-child) {

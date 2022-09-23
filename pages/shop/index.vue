@@ -1,9 +1,9 @@
 <template>
 
-  <Preloader v-if="getLoading"/>
+  <v-preloader v-if="getLoading"/>
   <div class="shopPage" v-else>
     <MenuList/>
-    <Products :products="getPortionProducts" :key="getActiveFilter"/>
+    <v-products :products="getPortionProducts" :key="getActiveFilter"/>
     <button :disabled="getPortionProducts.length < getPortionNumber" class="shopPage__brn"
             @click="fetchPortionProducts">show more
     </button>

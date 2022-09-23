@@ -21,5 +21,9 @@ export default {
   border-radius: 98px;
   color: #fff;
   transition: all .4s ease-in-out;
+
+  &:hover {
+    background-color: #858585;
+  }
 }
 </style>

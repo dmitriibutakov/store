@@ -15,7 +15,8 @@
         {{ data.name }}
       </h2>
       <p class="cart__price">${{ data.price }}.00</p>
-      <button class="cart__remove" @click="()=>removeItem(data.name)"><img src="images/icons/delete.png" alt="delete">
+      <button class="cart__remove" @click="()=>removeItem(data.name)">
+        <img src="images/icons/delete.png" alt="delete">
       </button>
     </div>
   </div>

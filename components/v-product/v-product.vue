@@ -6,13 +6,14 @@
     <h1 class="product__name">{{ product.name }}</h1>
     <p class="product__about">{{ product.about }}</p>
     <div class="product__price"> $ {{ product.price }}.00
-      <Button :name="'add'" :onClick="clickHandler"/>
+      <v-button :onClick="clickHandler">add</v-button>
+      <div class="dot"></div>
     </div>
   </div>
 </template>
 
 <script>
-import Button from '../Button/Button.vue';
+import Button from '../v-button/v-button.vue';
 import {mapActions} from "vuex";
 
 export default {
@@ -34,7 +35,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   margin: 10px 0;
   padding: 20px;
   max-width: 320px;
@@ -80,6 +81,7 @@ export default {
   .product__price {
     display: flex;
     width: 100%;
+    align-items: center;
     justify-content: space-between;
     font-size: 14px;
     color: #1d1d1f;

@@ -6,9 +6,7 @@
         {{ about }}
       </h2>
       <p class="screen__description">{{ description }}</p>
-      <Button :onClick="handleClick">
-        <span>buy</span>
-      </Button>
+      <v-button :onClick="handleClick">buy</v-button>
     </div>
     <img class="screen__img" :src="image" alt="product" data-not-lazy>
   </div>

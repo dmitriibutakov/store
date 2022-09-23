@@ -1,9 +1,9 @@
 <template>
-  <Preloader v-if="getLoading"/>
+  <v-preloader v-if="getLoading"/>
   <div v-else class="greeting__page">
     <h1 class="greeting__title">The best way to buy the products you love.</h1>
     <nuxt-link to="shop">
-      <Carousel :products="getImagesFromProducts"/>
+      <v-carousel :products="getImagesFromProducts"/>
     </nuxt-link>
     <p class="greeting__about">The latest.
       <br> Take a look at what’s new,

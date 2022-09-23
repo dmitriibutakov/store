@@ -1,13 +1,13 @@
 <template>
   <div class="cart">
     <h1 class="cart__title">Review your bag.</h1>
-    <CartBody :getCart="getCart"/>
+    <v-cart-body :getCart="getCart"/>
     <div class="cart__total">
       <h4 class="cart__total_name">Total</h4>
       <p class="cart__total_price">{{ getCart.reduce((a, b) => a + b.price, 0) }}.00 $</p>
     </div>
     <div class="cart__button">
-      <Button :onClick="showClick">order</Button>
+      <v-button :onClick="showClick">order</v-button>
     </div>
   </div>
 </template>
