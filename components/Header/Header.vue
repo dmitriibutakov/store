@@ -17,6 +17,7 @@
   width: 100%;
   position: fixed;
   padding: 10px;
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
 

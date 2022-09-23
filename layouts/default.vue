@@ -98,7 +98,7 @@ h6 {
   overflow: hidden;
 
   .main {
-    margin: 50px 10px 0 10px;
+    margin: 45px 10px 0 10px;
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
