@@ -7,9 +7,9 @@
     </div>
     <nav class="navigate">
       <a @click="handleClick('/')" class="link">HOME</a>
+      <a @click="handleClick('about')" class="link">ABOUT</a>
       <a @click="handleClick('shop')" class="link">OUR STORE</a>
       <a @click="handleClick('contacts')" class="link">CONTACTS</a>
-      <a @click="handleClick('about')" class="link">ABOUT</a>
     </nav>
   </div>
 </template>
@@ -34,15 +34,14 @@ export default {
 <style lang="scss" scoped>
 .navigation,
 .navigation__hidden {
-  position: absolute;
+  position: fixed;
   z-index: 2;
   top: 0px;
   display: flex;
-  height: 10px;
   justify-content: flex-end;
   transition: all 1s ease-in-out;
   padding: 13px 15px 0px;
-  min-height: 100%;
+  height: 100%;
 
   .burger,
   .burger__active {
@@ -116,5 +115,6 @@ export default {
 
 .navigation__hidden {
   right: -105px;
+  height: 50px;
 }
 </style>

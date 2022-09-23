@@ -107,7 +107,7 @@ export const mutations = {
     SET_ACTIVE_FILTER: (state, filter) => state.activeFilter = filter,
     SET_CART_FROM_STORAGE: (state, prod) => {
         const item = JSON.parse(prod)
-        if (typeof(item) === "object" && item !== null) {
+        if (typeof (item) === "object" && item !== null) {
             state.cart.push(item)
         }
     },

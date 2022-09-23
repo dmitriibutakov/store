@@ -1,0 +1,9 @@
+.my-layouts-enter-active,
+.my-layouts-leave-active {
+    transition: opacity .5s;
+}
+
+.my-layouts-enter,
+.my-layouts-leave-active {
+    opacity: 0;
+}

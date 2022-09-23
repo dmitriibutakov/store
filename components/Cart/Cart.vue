@@ -20,7 +20,7 @@ export default {
     ...mapGetters({getCart: "getCart"})
   },
   methods: {
-    ...mapActions({ getCartFromStorage: "getCartFromStorage"}),
+    ...mapActions({getCartFromStorage: "getCartFromStorage"}),
     showClick() {
       console.log("click")
     }
