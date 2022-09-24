@@ -1,10 +1,10 @@
 <template>
   <div class="shopPage__menu_item"
-       @click.stop="toggleMenu(!getIsShowMenu)">{{ getActiveFilter }}
+       @click.stop="toggleMenu">{{ activeVariant }}
     <ul class="shopPage__filter"
         v-if="getIsShowMenu">
       <li @click.stop
-          v-for="(data, index) in shopFilters"
+          v-for="(data, index) in listVariants"
           :key="index" @click="(event) => setFilteredProducts(event)"
           class="shopPage__filter_item">{{ data }}
       </li>
@@ -16,21 +16,12 @@
 import {mapActions, mapGetters} from "vuex";
 
 export default {
-  data() {
-    return {
-      shopFilters: ["All Products",
-        "iPhone",
-        "MacBook",
-        "iPad",
-        "Watch",
-        "Accessories"]
-    }
+  props: {
+    listVariants: Array,
+    activeVariant: String
   },
   computed: {
-    ...mapGetters({
-      getIsShowMenu: "getIsShowMenu",
-      getActiveFilter: "getActiveFilter"
-    })
+    ...mapGetters({getIsShowMenu: "getIsShowMenu"})
   },
   methods: {
     ...mapActions({

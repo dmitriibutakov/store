@@ -1,4 +1,5 @@
 export const state = () => ({
+    shopFilters: ["All Products", "iPhone", "MacBook", "iPad", "Watch", "Accessories"],
     imagesFromProducts: [],
     portionProducts: [],
     products: [],
@@ -54,8 +55,8 @@ export const actions = {
         commit('TOGGLE_MENU', false)
         dispatch('fetchPortionProducts')
     },
-    toggleMenu({commit}, menu) {
-        commit('TOGGLE_MENU', menu)
+    toggleMenu({commit}) {
+        commit('TOGGLE_MENU')
         commit('SET_PORTION_NUMBER', 0)
     },
     routeToShop({commit, dispatch}, name) {
@@ -78,7 +79,6 @@ export const actions = {
         localStorage.removeItem(key)
         dispatch("getCartFromStorage")
     },
-
 }
 
 export const getters = {
@@ -88,6 +88,7 @@ export const getters = {
     getLoading: state => state.loading,
     getProducts: state => state.products,
     getIsShowMenu: state => state.isShowMenu,
+    getShopFilters: state => state.shopFilters,
     getActiveFilter: state => state.activeFilter,
     getPortionNumber: state => state.portionNumber,
     getPortionProducts: state => state.portionProducts,
@@ -100,7 +101,7 @@ export const mutations = {
         state.cart = []
     },
     SET_LOADING: (state, value) => state.loading = value,
-    TOGGLE_MENU: (state, isShow) => state.isShowMenu = isShow,
+    TOGGLE_MENU: (state) => state.isShowMenu = !state.isShowMenu,
     SET_PRODUCTS: (state, products) => {
         state.products = products
     },

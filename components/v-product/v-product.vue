@@ -7,7 +7,7 @@
     <p class="product__about">{{ product.about }}</p>
     <div class="product__price"> $ {{ product.price }}.00
       <v-button :onClick="clickHandler">add</v-button>
-      <div class="dot"></div>
+      <div v-show="blick" :key="product.price" class="dot">added to cart</div>
     </div>
   </div>
 </template>
@@ -17,6 +17,11 @@ import Button from '../v-button/v-button.vue';
 import {mapActions} from "vuex";
 
 export default {
+  data() {
+    return {
+      blick: false
+    }
+  },
   props: {
     product: Object
   },
@@ -24,7 +29,11 @@ export default {
   methods: {
     ...mapActions({setCartFromStorage: "setCartFromStorage"}),
     clickHandler() {
+      this.blick = true
       this.setCartFromStorage(this.product)
+      setTimeout(() => {
+        this.blick = false
+      }, 2000)
     }
   }
 }
@@ -79,6 +88,7 @@ export default {
   }
 
   .product__price {
+    position: relative;
     display: flex;
     width: 100%;
     align-items: center;
@@ -86,6 +96,28 @@ export default {
     font-size: 14px;
     color: #1d1d1f;
     opacity: .9;
+
+    .dot {
+      position: absolute;
+      right: -5px;
+      bottom: -20px;
+      color: #006edb;
+      animation: blick 2s ease-in-out;
+    }
+
+    @keyframes blick {
+      0% {
+        opacity: 0;
+      }
+      30% {
+        opacity: 1;
+      }
+      90% {
+      }
+      100% {
+        opacity: 0;
+      }
+    }
   }
 }
 </style>

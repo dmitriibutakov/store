@@ -2,8 +2,8 @@
 
   <v-preloader v-if="getLoading"/>
   <div class="shopPage" v-else>
-    <MenuList/>
-    <v-products :products="getPortionProducts" :key="getActiveFilter"/>
+    <v-menu-list :list-variants="getShopFilters" :active-variant="getActiveFilter"/>
+    <v-products :products="getPortionProducts"/>
     <button :disabled="getPortionProducts.length < getPortionNumber" class="shopPage__brn"
             @click="fetchPortionProducts">show more
     </button>
@@ -16,11 +16,12 @@ import {mapActions, mapGetters} from "vuex";
 export default {
   computed: {
     ...mapGetters({
-      getProducts: "getProducts",
-      getPortionProducts: "getPortionProducts",
       getLoading: "getLoading",
+      getProducts: "getProducts",
+      getShopFilters: "getShopFilters",
       getActiveFilter: "getActiveFilter",
-      getPortionNumber: "getPortionNumber"
+      getPortionNumber: "getPortionNumber",
+      getPortionProducts: "getPortionProducts",
     }),
   },
   methods: {

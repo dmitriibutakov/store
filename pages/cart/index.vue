@@ -1,3 +1,3 @@
 <template>
-  <v-art/>
+  <v-cart/>
 </template>
