@@ -6,6 +6,7 @@
     <h1 class="product__name">{{ product.name }}</h1>
     <p class="product__about">{{ product.about }}</p>
     <div class="product__price"> $ {{ product.price }}.00
+      <v-quantity :productName="product.name"/>
       <v-button :onClick="clickHandler">add</v-button>
       <div v-show="blick" :key="product.price" class="dot">added to cart</div>
     </div>
@@ -19,7 +20,8 @@ import {mapActions} from "vuex";
 export default {
   data() {
     return {
-      blick: false
+      blick: false,
+      quantity: 1
     }
   },
   props: {
@@ -27,10 +29,10 @@ export default {
   },
   components: {Button},
   methods: {
-    ...mapActions({setCartFromStorage: "setCartFromStorage"}),
+    ...mapActions({setCartToStorage: "setCartToStorage"}),
     clickHandler() {
       this.blick = true
-      this.setCartFromStorage(this.product)
+      this.setCartToStorage(this.product)
       setTimeout(() => {
         this.blick = false
       }, 2000)

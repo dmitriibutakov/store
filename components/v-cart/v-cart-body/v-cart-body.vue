@@ -9,34 +9,46 @@
          :key="data.title">
       <div class="cart__img">
         <img :src="data.img"
-             alt="product">
+             alt="product"
+             data-not-lazy>
       </div>
       <h2 class="cart__product_name">
         {{ data.name }}
       </h2>
-      <p class="cart__price">${{ data.price }}.00</p>
+      <v-quantity :key="data.title"
+                  :productName="data.name"
+                  :price="getQuantity(data.name) * data.price"
+                  :quantityStore="getQuantity(data.name)"/>
+      <p class="cart__price" :key="getIndex">${{ getQuantity(data.name) * data.price }} .00</p>
       <button class="cart__remove" @click="()=>removeItem(data.name)">
-        <img src="images/icons/delete.png" alt="delete">
+        <img src="images/icons/delete.png" alt="delete" data-not-lazy>
       </button>
     </div>
   </div>
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   props: {
     getCart: Array
   },
+  computed: {
+    ...mapGetters({getIndex: "getIndex"}),
+  },
   methods: {
     ...mapActions({
       deleteCartFromStorage: "deleteCartFromStorage",
+      fetchSumCart: "fetchSumCart"
     }),
     removeItem(key) {
       this.deleteCartFromStorage(key)
+    },
+    getQuantity(name) {
+      return +localStorage.getItem(`${name} quantity`) || 1
     }
-  }
+  },
 }
 </script>
 
@@ -65,7 +77,7 @@ export default {
     & > *:not(:last-child) {
       display: flex;
       justify-content: flex-start;
-      flex: 0 0 25%;
+      flex: 0 0 19%;
     }
 
     & > :last-child {
@@ -75,7 +87,6 @@ export default {
     .cart__product_name {
       max-width: 400px;
       font-weight: 500;
-      font-size: 16px;
     }
   }
 
@@ -83,10 +94,6 @@ export default {
     img {
       height: 50px;
     }
-  }
-
-  .cart__price {
-    font-size: 18px;
   }
 
   .cart__remove {

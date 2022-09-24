@@ -4,7 +4,7 @@
     <v-cart-body :getCart="getCart"/>
     <div class="cart__total">
       <h4 class="cart__total_name">Total</h4>
-      <p class="cart__total_price">{{ getCart.reduce((a, b) => a + b.price, 0) }}.00 $</p>
+      <p :key="getIndex" class="cart__total_price">{{ getTotalSumCart }} $</p>
     </div>
     <div class="cart__button">
       <v-button :onClick="showClick">order</v-button>
@@ -17,16 +17,24 @@ import {mapActions, mapGetters} from "vuex";
 
 export default {
   computed: {
-    ...mapGetters({getCart: "getCart"})
+    ...mapGetters({
+      getCart: "getCart",
+      getIndex: "getIndex",
+      getTotalSumCart: "getTotalSumCart"
+    })
   },
   methods: {
-    ...mapActions({getCartFromStorage: "getCartFromStorage"}),
+    ...mapActions({
+      getCartFromStorage: "getCartFromStorage",
+      fetchSumCart: "fetchSumCart"
+    }),
     showClick() {
       console.log("click")
     }
   },
   mounted() {
     this.getCartFromStorage()
+    this.fetchSumCart(this.getCart)
   }
 }
 </script>
@@ -41,7 +49,7 @@ export default {
 
   & > * {
     max-width: 600px;
-    font-size: 20px;
+    font-size: 14px;
     line-height: 1.16667;
     font-weight: 600;
   }

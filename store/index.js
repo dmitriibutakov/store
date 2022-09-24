@@ -8,10 +8,11 @@ export const state = () => ({
     activeFilter: "All Products",
     isShowMenu: false,
     portionNumber: 0,
+    totalSumCart: 0,
     loading: false,
     error: "",
+    index: 999
 })
-
 export const actions = {
     async fetchProducts({commit, state}) {
         try {
@@ -59,9 +60,19 @@ export const actions = {
         commit('TOGGLE_MENU')
         commit('SET_PORTION_NUMBER', 0)
     },
+    refreshCart({commit}) {
+        commit("FETCH_INDEX")
+    },
     routeToShop({commit, dispatch}, name) {
         commit('SET_ACTIVE_FILTER', name)
         dispatch('fetchPortionProducts')
+    },
+    fetchSumCart({commit, state}, cart) {
+        commit("FETCH_SUM_CART", -state.totalSumCart)
+        cart.map((product) => {
+            let quantity = +localStorage.getItem(`${product.name} quantity`) || 1
+            commit("FETCH_SUM_CART", product.price * quantity)
+        })
     },
     getCartFromStorage({commit}) {
         commit('CLEAR_CART')
@@ -72,23 +83,27 @@ export const actions = {
             commit('SET_CART_FROM_STORAGE', localStorage.getItem(key))
         }
     },
-    setCartFromStorage({commit}, product) {
+    setCartToStorage({}, product) {
         localStorage.setItem(`${product.name}`, JSON.stringify(product))
+    },
+    setQuantityToStorage({}, {name, quantity}) {
+        localStorage.setItem(`${name} quantity`, JSON.stringify(quantity))
     },
     deleteCartFromStorage({dispatch}, key) {
         localStorage.removeItem(key)
         dispatch("getCartFromStorage")
     },
 }
-
 export const getters = {
     getCart: state => state.cart,
+    getIndex: state => state.index,
     getError: state => state.error,
     getAbout: state => state.about,
     getLoading: state => state.loading,
     getProducts: state => state.products,
     getIsShowMenu: state => state.isShowMenu,
     getShopFilters: state => state.shopFilters,
+    getTotalSumCart: state => state.totalSumCart,
     getActiveFilter: state => state.activeFilter,
     getPortionNumber: state => state.portionNumber,
     getPortionProducts: state => state.portionProducts,
@@ -100,18 +115,16 @@ export const mutations = {
     CLEAR_CART: (state) => {
         state.cart = []
     },
+    FETCH_INDEX: (state) => state.index++,
     SET_LOADING: (state, value) => state.loading = value,
     TOGGLE_MENU: (state) => state.isShowMenu = !state.isShowMenu,
     SET_PRODUCTS: (state, products) => {
         state.products = products
     },
-    SET_ACTIVE_FILTER: (state, filter) => state.activeFilter = filter,
-    SET_CART_FROM_STORAGE: (state, prod) => {
-        const item = JSON.parse(prod)
-        if (typeof (item) === "object" && item !== null) {
-            state.cart.push(item)
-        }
+    FETCH_SUM_CART: (state, number) => {
+        state.totalSumCart += number
     },
+    SET_ACTIVE_FILTER: (state, filter) => state.activeFilter = filter,
     SET_PORTION_NUMBER: (state, num) => state.portionNumber = num,
     SET_PORTION_PRODUCTS: (state) => {
         state.portionNumber += 4
@@ -124,6 +137,12 @@ export const mutations = {
                 .filter(el => el.filter
                     .includes(state.activeFilter.toLowerCase()))
                 .slice(0, state.portionNumber)
+        }
+    },
+    SET_CART_FROM_STORAGE: (state, prod) => {
+        const item = JSON.parse(prod)
+        if (typeof (item) === "object" && item !== null) {
+            state.cart.push(item)
         }
     },
     SET_IMAGES_FROM_PRODUCTS: (state, image) => state.imagesFromProducts.push(image),

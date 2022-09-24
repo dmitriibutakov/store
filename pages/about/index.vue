@@ -2,10 +2,10 @@
   <v-preloader v-if="getLoading"/>
   <div v-else class="aboutPage">
     <v-about-product v-for="(data, index) in getAbout" :key="index" :title="data.title"
-                    :about="data.about"
-                    :description="data.description"
-                    :image="data.image"
-                    :screen="data.blackTheme"
+                     :about="data.about"
+                     :description="data.description"
+                     :image="data.image"
+                     :screen="data.blackTheme"
     />
   </div>
 </template>
@@ -18,7 +18,6 @@ export default {
     ...mapActions({fetchAbout: "fetchAbout"}),
   },
   mounted() {
-    console.log('about')
     this.fetchAbout()
   },
   computed: {
