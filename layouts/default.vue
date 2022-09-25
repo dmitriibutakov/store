@@ -15,10 +15,11 @@ import {mapActions} from "vuex";
 export default {
   components: {Footer},
   methods: {
-    ...mapActions({fetchProducts: "fetchProducts"}),
+    ...mapActions({fetchProducts: "fetchProducts", getCartFromStorage: "getCartFromStorage"}),
   },
   mounted() {
     this.fetchProducts()
+    this.getCartFromStorage()
   }
 }
 </script>

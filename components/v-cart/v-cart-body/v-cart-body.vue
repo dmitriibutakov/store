@@ -19,7 +19,7 @@
                   :productName="data.name"
                   :price="getQuantity(data.name) * data.price"
                   :quantityStore="getQuantity(data.name)"/>
-      <p class="cart__price" :key="getIndex">${{ getQuantity(data.name) * data.price }} .00</p>
+      <p class="cart__price" :key="getIndex">${{ getQuantity(data.name) * data.price }}</p>
       <button class="cart__remove" @click="()=>removeItem(data.name)">
         <img src="images/icons/delete.png" alt="delete" data-not-lazy>
       </button>
@@ -35,7 +35,10 @@ export default {
     getCart: Array
   },
   computed: {
-    ...mapGetters({getIndex: "getIndex"}),
+    ...mapGetters({
+      getIndex: "getIndex",
+      getCart: "getCart"
+    }),
   },
   methods: {
     ...mapActions({
@@ -44,6 +47,7 @@ export default {
     }),
     removeItem(key) {
       this.deleteCartFromStorage(key)
+      this.fetchSumCart(this.getCart)
     },
     getQuantity(name) {
       return +localStorage.getItem(`${name} quantity`) || 1

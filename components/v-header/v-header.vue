@@ -4,14 +4,22 @@
     <h1 class="header__name">
       <nuxt-link to="/">Store.</nuxt-link>
     </h1>
-    <div class="header__icons">
-      <nuxt-link to="cart">
-        <img class="header__icon" src="/images/icons/cart.png" alt="cart">
-      </nuxt-link>
-    </div>
+    <nuxt-link to="cart" class="cart">
+      <div class="cart__indicator">{{ getCart.length }}</div>
+      <img class="header__icon" src="/images/icons/cart.png" alt="cart">
+    </nuxt-link>
   </header>
 </template>
 
+<script>
+import {mapGetters} from "vuex";
+
+export default {
+  computed: {
+    ...mapGetters({getCart: "getCart"})
+  },
+}
+</script>
 <style lang="scss" scoped>
 .header {
   width: 100%;
@@ -27,13 +35,29 @@
     font-weight: 700;
   }
 
-  .header__icons {
+  .cart {
+    position: relative;
     margin-right: 55px;
 
-    .header__icon {
-      height: 25px;
-      width: 25px;
+    .cart__indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+      background-color: #006edb;
+      color: white;
+      border-radius: 99px;
+      position: absolute;
+      left: -5px;
+      bottom: -5px;
     }
+  }
+
+  .header__icon {
+    height: 25px;
+    width: 25px;
   }
 }
 </style>

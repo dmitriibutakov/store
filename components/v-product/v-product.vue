@@ -29,13 +29,14 @@ export default {
   },
   components: {Button},
   methods: {
-    ...mapActions({setCartToStorage: "setCartToStorage"}),
+    ...mapActions({setCartToStorage: "setCartToStorage", getCartFromStorage: "getCartFromStorage"}),
     clickHandler() {
       this.blick = true
       this.setCartToStorage(this.product)
       setTimeout(() => {
         this.blick = false
       }, 2000)
+      this.getCartFromStorage()
     }
   }
 }
