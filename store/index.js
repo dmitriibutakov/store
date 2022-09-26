@@ -7,6 +7,7 @@ export const state = () => ({
     cart: [],
     activeFilter: "All Products",
     isShowMenu: false,
+    isShowModal: false,
     portionNumber: 0,
     totalSumCart: 0,
     loading: false,
@@ -63,6 +64,7 @@ export const actions = {
     refreshCart({commit}) {
         commit("FETCH_INDEX")
     },
+    toggleModal({commit}) {commit("SET_IS_SHOW_MODAL")},
     routeToShop({commit, dispatch}, name) {
         commit('SET_ACTIVE_FILTER', name)
         dispatch('fetchPortionProducts')
@@ -102,6 +104,7 @@ export const getters = {
     getLoading: state => state.loading,
     getProducts: state => state.products,
     getIsShowMenu: state => state.isShowMenu,
+    getIsShowModal: state => state.isShowModal,
     getShopFilters: state => state.shopFilters,
     getTotalSumCart: state => state.totalSumCart,
     getActiveFilter: state => state.activeFilter,
@@ -112,10 +115,10 @@ export const getters = {
 export const mutations = {
     SET_ABOUT: (state, about) => state.about = about,
     SET_ERROR: (state, error) => state.error = error,
-    CLEAR_CART: (state) => {
+    CLEAR_CART: state => {
         state.cart = []
     },
-    FETCH_INDEX: (state) => state.index++,
+    FETCH_INDEX: state => state.index++,
     SET_LOADING: (state, value) => state.loading = value,
     TOGGLE_MENU: (state) => state.isShowMenu = !state.isShowMenu,
     SET_PRODUCTS: (state, products) => {
@@ -124,6 +127,7 @@ export const mutations = {
     FETCH_SUM_CART: (state, number) => {
         state.totalSumCart += number
     },
+    SET_IS_SHOW_MODAL: state => state.isShowModal = !state.isShowModal,
     SET_ACTIVE_FILTER: (state, filter) => state.activeFilter = filter,
     SET_PORTION_NUMBER: (state, num) => state.portionNumber = num,
     SET_PORTION_PRODUCTS: (state) => {

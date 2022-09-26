@@ -1,0 +1,84 @@
+<template>
+  <div @click="toggleModal" class="modal__background">
+    <div class="modal__block">
+      <button @click="toggleModal" class="modal__close">&#215;</button>
+      <h1 class="modal__title">{{ title }}</h1>
+        <slot></slot>
+    </div>
+  </div>
+</template>
+
+<script>
+import {mapActions} from "vuex";
+
+export default {
+  props: {
+    title: String
+  },
+  methods: {
+    ...mapActions({toggleModal: "toggleModal"})
+  }
+}
+</script>
+
+<style scoped lang="scss">
+.modal__background {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: rgba(83, 83, 86, 0.3);
+  z-index: 9999;
+  animation: modal 300ms ease-in-out;
+
+  @-webkit-keyframes modal {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .modal__block {
+    position: relative;
+    margin: 0 auto;
+    padding: 25px 10px;
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    width: 80vw;
+    max-height: 1000px;
+    max-width: 800px;
+    border-radius: 20px;
+    background-color: white;
+
+    .modal__close {
+      position: absolute;
+      font-size: 18px;
+      right: 10px;
+      top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #e82323;
+      color: white;
+      border-radius: 20px;
+      width: 24px;
+      height: 24px;
+    }
+
+    .modal__title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .modal__slot {
+      display: flex;
+    }
+  }
+}
+</style>

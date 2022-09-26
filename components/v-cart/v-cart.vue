@@ -1,5 +1,8 @@
 <template>
   <div class="cart">
+    <v-modal v-if="getIsShowModal" :title="'Billing details:'">
+      <v-modal-total/>
+    </v-modal>
     <h1 class="cart__title">Review your bag.</h1>
     <v-cart-body :getCart="getCart"/>
     <div class="cart__total">
@@ -20,16 +23,19 @@ export default {
     ...mapGetters({
       getCart: "getCart",
       getIndex: "getIndex",
+      getIsShowModal: "getIsShowModal",
       getTotalSumCart: "getTotalSumCart"
     })
   },
   methods: {
     ...mapActions({
       getCartFromStorage: "getCartFromStorage",
-      fetchSumCart: "fetchSumCart"
+      fetchSumCart: "fetchSumCart",
+      toggleModal: "toggleModal"
     }),
     showClick() {
       console.log("click")
+      this.toggleModal()
     }
   },
   mounted() {
