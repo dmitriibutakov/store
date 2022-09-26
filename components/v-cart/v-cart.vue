@@ -7,7 +7,7 @@
       <p :key="getIndex" class="cart__total_price">{{ getTotalSumCart }} $</p>
     </div>
     <div class="cart__button">
-      <v-button :onClick="showClick">order</v-button>
+      <v-button :disabled="getCart.length < 1" :onClick="showClick">order</v-button>
     </div>
   </div>
 </template>

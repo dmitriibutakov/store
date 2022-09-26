@@ -20,7 +20,11 @@
                   :price="getQuantity(data.name) * data.price"
                   :quantityStore="getQuantity(data.name)"/>
       <p class="cart__price" :key="getIndex">${{ getQuantity(data.name) * data.price }}</p>
-      <button class="cart__remove" @click="()=>removeItem(data.name)">
+      <button class="cart__remove" @click="()=>{
+        removeItem(data.name)
+        removeItem(`${data.name} quantity`)
+
+      }">
         <img src="images/icons/delete.png" alt="delete" data-not-lazy>
       </button>
     </div>
@@ -63,14 +67,12 @@ export default {
   width: 100%;
 
   .cart__empty {
-    display: flex;
+    margin: 0 auto 30px auto;
     color: transparent;
-    text-align: center;
     background-clip: text;
     font-weight: 600;
     font-size: 24px;
     background-image: linear-gradient(90deg, #2ca2b4, #5598de 24%, #7f87ff 45%, #f65aad 76%, #ec3d43);
-    margin-bottom: 30px;
   }
 
   .cart__card {

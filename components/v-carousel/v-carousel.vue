@@ -16,7 +16,7 @@ export default {
     }
   },
   methods: {
-    countSlide(num, arr) {
+    countSlide() {
       let that = this
       setTimeout(function tick() {
         if (that.count === that.products.length - 1) {
@@ -72,6 +72,13 @@ export default {
   h1 {
     margin-bottom: 30px;
     font-weight: 700;
+  }
+}
+
+@media (min-width: 600px) {
+  .greeting__carousel {
+    width: 400px;
+    height: 400px;
   }
 }
 </style>
