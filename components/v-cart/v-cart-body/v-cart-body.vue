@@ -41,7 +41,6 @@ export default {
   computed: {
     ...mapGetters({
       getIndex: "getIndex",
-      getCart: "getCart"
     }),
   },
   methods: {

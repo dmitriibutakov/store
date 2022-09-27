@@ -1,9 +1,7 @@
 <template>
-  <div class="billing__block">
-    <div class="billing__body">
+  <div class="billing__body">
     <h5>{{ product.name }}</h5>
-    <span>{{ product.price }}</span>
-    </div>
+    <span>{{ product.price }} $</span>
   </div>
 </template>
 
@@ -16,10 +14,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.billing__block {
+.billing__body {
   display: flex;
-  .billing__body {
-    display: flex;
-  }
+  justify-content: space-between;
+  max-width: 300px;
+  margin-bottom: 10px;
 }
 </style>

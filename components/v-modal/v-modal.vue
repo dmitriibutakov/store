@@ -43,8 +43,7 @@ export default {
     padding: 25px 10px;
     display: flex;
     flex-direction: column;
-    min-width: 80vw;
-    max-width: 800px;
+    width: 80vw;
     border-radius: 20px;
     background-color: white;
     scroll-behavior: auto;
