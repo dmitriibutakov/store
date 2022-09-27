@@ -21,9 +21,11 @@ export default {
   border-radius: 98px;
   color: #fff;
   transition: all .4s ease-in-out;
-&:disabled {
-  background-color: #858585;
-}
+
+  &:disabled {
+    background-color: #858585;
+  }
+
   &:hover {
     background-color: #858585;
   }

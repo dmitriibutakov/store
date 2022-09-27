@@ -16,12 +16,12 @@
       <div class="billing__pay pay">
         <v-input :title="'card number'"/>
         <div class="pay__data">
-          <span class="pay__year">2026</span>
-          <span class="pay__month">02</span>
+          <v-input :title="'year issue'" class="pay__year" :type="'number'"/>
+          <v-input :title="'month issue'" class="pay__month" :type="'number'"/>
         </div>
       </div>
     </div>
-    <v-button>place order</v-button>
+    <v-button :onClick="sentBilling">place order</v-button>
   </div>
 </template>
 
@@ -31,6 +31,11 @@ import {mapGetters} from "vuex";
 export default {
   computed: {
     ...mapGetters({getTotalSumCart: "getTotalSumCart", getCart: "getCart"})
+  },
+  methods: {
+    sentBilling() {
+      console.log("sent billing")
+    }
   }
 }
 </script>
@@ -39,9 +44,12 @@ export default {
 .total__block {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   .total__inputs {
     margin: -10px;
+
     & > * {
       padding: 10px;
     }
@@ -49,24 +57,31 @@ export default {
 }
 
 .total__billing {
-  margin: 10px 0;
+  margin: 10px;
   display: flex;
-  justify-content: space-between;
-.billing__pay, .billing__block {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-  padding: 10px;
-  font-weight: 400;
-  border: 1px solid rgba(134, 133, 133, 0.48);
-  border-radius: 20px;
-}
+  align-items: flex-start;
+  justify-content: center;
+
+
+  .billing__pay, .billing__block {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    padding: 10px;
+    font-weight: 400;
+    border: 1px solid rgba(134, 133, 133, 0.48);
+    border-radius: 20px;
+  }
+
   .billing__block {
+    margin-right: 10px;
+
     .total__sum {
       padding-top: 10px;
       display: flex;
       justify-content: space-between;
-      max-width: 300px;
+      width: 220px;
       font-weight: 400;
       border-top: 1px solid rgba(134, 133, 133, 0.48);
     }
@@ -74,4 +89,9 @@ export default {
 
 }
 
+@media (max-width: 821px) {
+  .total__billing {
+    flex-direction: column;
+  }
+}
 </style>

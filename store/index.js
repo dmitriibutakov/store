@@ -64,7 +64,9 @@ export const actions = {
     refreshCart({commit}) {
         commit("FETCH_INDEX")
     },
-    toggleModal({commit}) {commit("SET_IS_SHOW_MODAL")},
+    toggleModal({commit}) {
+        commit("SET_IS_SHOW_MODAL")
+    },
     routeToShop({commit, dispatch}, name) {
         commit('SET_ACTIVE_FILTER', name)
         dispatch('fetchPortionProducts')
@@ -131,7 +133,7 @@ export const mutations = {
     SET_ACTIVE_FILTER: (state, filter) => state.activeFilter = filter,
     SET_PORTION_NUMBER: (state, num) => state.portionNumber = num,
     SET_PORTION_PRODUCTS: (state) => {
-        state.portionNumber += 4
+        state.portionNumber += 3
         if (state.activeFilter === "All Products") {
             state.portionProducts = state.products
                 .slice(0, state.portionNumber)

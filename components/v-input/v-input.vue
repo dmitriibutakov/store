@@ -3,14 +3,15 @@
     <h6 class="input__title">
       {{ title }}
     </h6>
-    <input type="text" :placeholder="title" class="input__body">
+    <input :type="type || 'text'" class="input__body">
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    title: String
+    title: String,
+    type: String,
   }
 }
 </script>
