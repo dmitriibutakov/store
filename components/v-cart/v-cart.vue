@@ -1,8 +1,10 @@
 <template>
   <div class="cart">
-    <v-modal v-if="getIsShowModal" :title="'Billing details:'">
-      <v-modal-total/>
-    </v-modal>
+    <transition name="background">
+      <v-modal v-if="getIsShowModal" :title="'Billing details:'">
+        <v-modal-total/>
+      </v-modal>
+    </transition>
     <h1 class="cart__title">Review your bag.</h1>
     <v-cart-body :getCart="getCart"/>
     <div class="cart__total">
@@ -52,6 +54,14 @@ export default {
   align-items: center;
   height: 100%;
   width: 100%;
+
+  .background-enter-active, .background-leave-active {
+    transition: opacity .5s;
+  }
+
+  .background-enter, .background-leave-to {
+    opacity: 0;
+  }
 
   & > * {
     max-width: 600px;

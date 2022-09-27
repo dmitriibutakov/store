@@ -1,5 +1,4 @@
 <template>
-
   <v-preloader v-if="getLoading"/>
   <div class="shopPage" v-else>
     <v-menu-list :list-variants="getShopFilters" :active-variant="getActiveFilter"/>

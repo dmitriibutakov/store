@@ -3,17 +3,20 @@
     <div class="modal__block">
       <button @click="toggleModal" class="modal__close">&#215;</button>
       <h1 class="modal__title">{{ title }}</h1>
-        <slot></slot>
+      <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   props: {
     title: String
+  },
+  computed: {
+    ...mapGetters({getIsShowModal: "getIsShowModal"})
   },
   methods: {
     ...mapActions({toggleModal: "toggleModal"})
@@ -32,16 +35,6 @@ export default {
   min-height: 100vh;
   background-color: rgba(83, 83, 86, 0.3);
   z-index: 9999;
-  animation: modal 300ms ease-in-out;
-
-  @-webkit-keyframes modal {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
 
   .modal__block {
     position: relative;
@@ -76,6 +69,7 @@ export default {
       font-weight: 600;
       margin-bottom: 20px;
     }
+
     .modal__slot {
       display: flex;
     }

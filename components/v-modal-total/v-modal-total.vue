@@ -4,6 +4,7 @@
     <v-input :title="'Passport number'"/>
     <v-input :title="'Address'"/>
     <v-input :title="'Mobile number'"/>
+    <v-billing-total v-for="data in getCart" :key="data.name" :product="data"/>
     <h3 class="total__sum">total sum
       <span class="total__number"> {{ getTotalSumCart }} $</span>
     </h3>
@@ -15,7 +16,7 @@ import {mapGetters} from "vuex";
 
 export default {
   computed: {
-    ...mapGetters({getTotalSumCart: "getTotalSumCart"})
+    ...mapGetters({getTotalSumCart: "getTotalSumCart", getCart: "getCart"})
   }
 }
 </script>

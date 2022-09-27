@@ -1,6 +1,7 @@
 <template>
   <div class="shopPage__menu_item"
        @click.stop="toggleMenu">{{ activeVariant }}
+    <transition name="background">
     <ul class="shopPage__filter"
         v-if="getIsShowMenu">
       <li @click.stop
@@ -9,6 +10,7 @@
           class="shopPage__filter_item">{{ data }}
       </li>
     </ul>
+    </transition>
   </div>
 </template>
 
@@ -49,8 +51,6 @@ export default {
     left: 0;
     color: #6e6e73;
     z-index: 2;
-    opacity: .8;
-    animation: shad 1s ease-in-out;
 
     .shopPage__filter_item {
       width: calc(100% - 10px);
@@ -63,14 +63,12 @@ export default {
     }
   }
 
-  @-webkit-keyframes shad {
-    0% {
-      opacity: 0;
-    }
+  .background-enter-active, .background-leave-active {
+    transition: opacity .5s;
+  }
 
-    100% {
-      opacity: .8;
-    }
+  .background-enter, .background-leave-to {
+    opacity: 0;
   }
 
 }
