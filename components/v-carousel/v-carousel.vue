@@ -54,18 +54,22 @@ export default {
   @-webkit-keyframes show {
     0% {
       translate: -120%;
+      opacity: 0;
     }
 
     40% {
       translate: 0;
+      opacity: 1;
     }
 
     60% {
       translate: 0;
+      opacity: 1;
     }
 
     100% {
       translate: 130%;
+      opacity: 0;
     }
   }
 

@@ -4,7 +4,7 @@
     <v-input :title="'Passport number'"/>
     <v-input :title="'Address'"/>
     <v-input :title="'Mobile number'"/>
-    <v-billing-total v-for="data in getCart" :key="data.name" :product="data"/>
+    <v-billing-total v-for="data in getCart" :key="data.name"  :product="data"/>
     <h3 class="total__sum">total sum
       <span class="total__number"> {{ getTotalSumCart }} $</span>
     </h3>
@@ -23,10 +23,12 @@ export default {
 
 <style scoped lang="scss">
 .total__block {
-  &>*:not(:last-child) {
-    margin-bottom: 10px;
+  margin: -10px;
+  & > * {
+    padding: 10px;
   }
 }
+
 @media (min-width: 600px) {
   .total__block {
     flex-direction: row;

@@ -1,6 +1,6 @@
 <template>
-  <div @click="toggleModal" class="modal__background">
-    <div class="modal__block">
+  <div @click.stop="toggleModal" class="modal__background">
+    <div @click.stop class="modal__block">
       <button @click="toggleModal" class="modal__close">&#215;</button>
       <h1 class="modal__title">{{ title }}</h1>
       <slot></slot>
@@ -28,26 +28,26 @@ export default {
 .modal__background {
   display: flex;
   align-items: center;
+  justify-content: center;
   position: absolute;
   left: 0;
   top: 0;
-  min-width: 100vw;
-  min-height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
   background-color: rgba(83, 83, 86, 0.3);
   z-index: 9999;
 
   .modal__block {
     position: relative;
-    margin: 0 auto;
+    margin: 10px;
     padding: 25px 10px;
     display: flex;
     flex-direction: column;
-    height: 60vh;
-    width: 80vw;
-    max-height: 1000px;
+    min-width: 80vw;
     max-width: 800px;
     border-radius: 20px;
     background-color: white;
+    scroll-behavior: auto;
 
     .modal__close {
       position: absolute;

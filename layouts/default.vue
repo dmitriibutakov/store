@@ -39,7 +39,6 @@ export default {
     flex-direction: column;
     background-color: #e5e5e500;
     color: #11142D;
-    overflow: hidden;
   }
   .footer {
   }
