@@ -1,11 +1,17 @@
 <template>
-  <div>
-    contacts
-  </div>
+  <form>
+    <v-input type="text"/>
+  </form>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      email: "sad"
+    }
+  }
+}
 </script>
 
 <style scoped>

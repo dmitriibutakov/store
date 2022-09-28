@@ -24,7 +24,7 @@ export default {
         } else {
           that.count++
         }
-        return setTimeout(tick, 5000)
+        return setTimeout(tick, 4000)
       }, 4000)
     }
   },
@@ -48,27 +48,27 @@ export default {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    animation: show 5000ms infinite;
+    animation: show 4000ms infinite ease-in;
   }
 
   @-webkit-keyframes show {
     0% {
-      translate: -120%;
+      transform: translateX(-100%);
       opacity: 0;
     }
 
     40% {
-      translate: 0;
+      transform: translateX(0);
       opacity: 1;
     }
 
     60% {
-      translate: 0;
+      transform: translateX(0);
       opacity: 1;
     }
 
     100% {
-      translate: 130%;
+      transform: translateX(100%);
       opacity: 0;
     }
   }

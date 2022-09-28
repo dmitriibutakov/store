@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
-    <p>@2022 dmitryload GitHub</p>
-    <nuxt-link to="/contacts">Contacts</nuxt-link>
+    <p>@2022 <a class="footer__link" href="https://github.com/dmitryload">dmitryload GitHub</a> </p>
+    <nuxt-link class="footer__nuxtlink" to="/contacts">Contacts</nuxt-link>
   </footer>
 </template>
 
@@ -14,13 +14,16 @@
   align-items: center;
   padding: 20px 0;
   font-size: 14px;
-
   & > :first-child {
     margin-right: 10px;
   }
 
-  & > :last-child {
-    font-weight: 700;
+  .footer__link, .footer__nuxtlink {
+    transition: all 300ms ease-in;
+    &:hover {
+      opacity: .8;
+      color: #006edb;
+    }
   }
 }
 </style>
