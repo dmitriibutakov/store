@@ -2,7 +2,7 @@
   <v-preloader v-if="getLoading"/>
   <div class="shopPage" v-else>
     <v-menu-list :list-variants="getShopFilters" :active-variant="getActiveFilter"/>
-    <v-products :products="getPortionProducts"/>
+      <v-products :products="getPortionProducts"/>
     <button :disabled="getPortionProducts.length < getPortionNumber" class="shopPage__brn"
             @click="fetchPortionProducts">show more
     </button>

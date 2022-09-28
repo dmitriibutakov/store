@@ -15,6 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .products {
   padding: -10px;
   display: flex;

@@ -46,6 +46,7 @@ export default {
   methods: {
     ...mapActions({
       deleteCartFromStorage: "deleteCartFromStorage",
+      getQuantityFromStorage: "getQuantityFromStorage",
       fetchSumCart: "fetchSumCart"
     }),
     removeItem(key) {

@@ -31,7 +31,7 @@ export const actions = {
                     })
                 })
         } catch (error) {
-            commit('SET_ERROR', error.message)
+            commit(error)
         }
     },
     async fetchAbout({commit, state}) {
@@ -46,7 +46,7 @@ export const actions = {
                     commit('SET_LOADING', false)
                 })
         } catch (error) {
-            commit('SET_ERROR', error.message)
+            console.log(error)
         }
     },
     fetchPortionProducts({commit}) {
@@ -101,7 +101,6 @@ export const actions = {
 export const getters = {
     getCart: state => state.cart,
     getIndex: state => state.index,
-    getError: state => state.error,
     getAbout: state => state.about,
     getLoading: state => state.loading,
     getProducts: state => state.products,

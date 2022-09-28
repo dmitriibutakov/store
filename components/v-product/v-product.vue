@@ -1,16 +1,16 @@
 <template>
-  <div class="product">
-    <div class="product__img">
-      <img :src=product.img alt="product">
+    <div class="product">
+      <div class="product__img">
+        <img :src=product.img alt="product">
+      </div>
+      <h1 class="product__name">{{ product.name }}</h1>
+      <p class="product__about">{{ product.about }}</p>
+      <div class="product__price"> $ {{ product.price }}.00
+        <v-quantity :productName="product.name"/>
+        <v-button :onClick="clickHandler">add</v-button>
+        <div v-show="blick" :key="product.price" class="dot">added to cart</div>
+      </div>
     </div>
-    <h1 class="product__name">{{ product.name }}</h1>
-    <p class="product__about">{{ product.about }}</p>
-    <div class="product__price"> $ {{ product.price }}.00
-      <v-quantity :productName="product.name"/>
-      <v-button :onClick="clickHandler">add</v-button>
-      <div v-show="blick" :key="product.price" class="dot">added to cart</div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -43,6 +43,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .product {
   display: flex;
   flex-direction: column;
