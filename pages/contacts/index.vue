@@ -1,10 +1,16 @@
 <template>
-<div>
+<form class="contacts__form">
     {{ name }}
     <v-input @customChange="handleCustomChange"
              :placeholder="'name'"/>
+  {{email}}
+  <v-input @customChange="handleCustomChange"
+             :placeholder="'email'"/>
+  {{number}}
+  <v-input @customChange="handleCustomChange"
+             :placeholder="'number'"/>
     <v-button :onClick="sendClick">send</v-button>
-</div>
+</form>
 </template>
 
 <script>
@@ -13,7 +19,7 @@ export default {
     return {
       name: "",
       email: "",
-      number: 0
+      number: null
     }
   },
   methods: {
@@ -21,7 +27,7 @@ export default {
       console.log(123)
     },
     handleCustomChange(value,data) {
-      this.name = data
+      this[value] = data
     }
   }
 }
