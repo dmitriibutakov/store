@@ -3,7 +3,10 @@
     <h6 class="input__title">
       {{ title }}
     </h6>
-    <input :type="type || 'text'" class="input__body">
+    <input :type="type || 'text'"
+           @input="handleChange"
+           :placeholder="placeholder"
+           class="input__body">
   </div>
 </template>
 
@@ -12,6 +15,12 @@ export default {
   props: {
     title: String,
     type: String,
+    placeholder: String,
+  },
+  methods: {
+    handleChange(event) {
+      this.$emit("customChange", this.placeholder, event.target.value)
+    }
   }
 }
 </script>
