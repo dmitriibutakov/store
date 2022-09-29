@@ -1,47 +1,58 @@
 <template>
-<form class="contacts__form">
-    {{ name }}
-    <v-input @customChange="handleCustomChange"
-             :placeholder="'name'"/>
-  {{email}}
-  <v-input @customChange="handleCustomChange"
-             :placeholder="'email'"/>
-  {{number}}
-  <v-input @customChange="handleCustomChange"
-             :placeholder="'number'"/>
-    <v-button :onClick="sendClick">send</v-button>
-</form>
+  <div class="contacts__block">
+    <form class="contacts__form">
+      <v-input v-for="data in Object.keys(formData)"
+               :error="formValidator[data]"
+               :key="data"
+               @customChange="handleCustomChange"
+               :placeholder="data"/>
+    </form>
+    <v-button @onClick="sendClick">send</v-button>
+
+  </div>
 </template>
 
 <script>
+import {isValidFormInput} from "assets/isValidFormInput";
+
 export default {
   data() {
     return {
-      name: "",
-      email: "",
-      number: null
+      formData: {
+        name: "",
+        email: "",
+        number: "",
+      },
+      formValidator: {
+        name: "",
+        email: "",
+        number: ""
+      }
     }
   },
   methods: {
     sendClick() {
-      console.log(123)
+      isValidFormInput(this.formData, this.formValidator)
     },
-    handleCustomChange(value,data) {
-      this[value] = data
-    }
+    handleCustomChange(value, data) {
+      this.formData[value] = data
+    },
   }
 }
 </script>
 
 <style scoped lang="scss">
-.contacts__form {
+.contacts__block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  .contacts__form {
+    display: flex;
+    flex-direction: column;
 
-  & > *:not(:last-child) {
-    margin-bottom: 20px;
+    & > * {
+      margin-bottom: 20px;
+    }
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClick" class="button">
+  <button @click="$emit('onClick')" class="button">
     <slot>{{ name }}</slot>
   </button>
 </template>

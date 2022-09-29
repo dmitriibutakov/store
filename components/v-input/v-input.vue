@@ -2,6 +2,7 @@
   <div class="input__block">
     <h6 class="input__title">
       {{ title }}
+      {{ error }}
     </h6>
     <input :type="type || 'text'"
            @input="handleChange"
@@ -16,11 +17,12 @@ export default {
     title: String,
     type: String,
     placeholder: String,
+    error: String
   },
   methods: {
     handleChange(event) {
       this.$emit("customChange", this.placeholder, event.target.value)
-    }
+    },
   }
 }
 </script>
