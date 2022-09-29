@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <v-button :onClick="sentBilling">place order</v-button>
+    <v-button @onClick="sentBilling">place order</v-button>
   </div>
 </template>
 

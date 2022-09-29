@@ -115,7 +115,6 @@ export const getters = {
 }
 export const mutations = {
     SET_ABOUT: (state, about) => state.about = about,
-    SET_ERROR: (state, error) => state.error = error,
     CLEAR_CART: state => {
         state.cart = []
     },

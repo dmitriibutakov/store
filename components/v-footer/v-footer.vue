@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <p>@2022 <a class="footer__link" href="https://github.com/dmitryload">dmitryload GitHub</a></p>
-    <nuxt-link class="footer__nuxtlink" to="/contacts">Contacts</nuxt-link>
+    <nuxt-link class="footer__nuxtlink" to="/contact-us">Contacts</nuxt-link>
   </footer>
 </template>
 

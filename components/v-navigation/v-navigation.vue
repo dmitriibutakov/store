@@ -6,10 +6,10 @@
       <span></span>
     </div>
     <nav class="navigate">
-      <a @click="handleClick('/')" class="link">HOME</a>
-      <a @click="handleClick('about')" class="link">ABOUT</a>
-      <a @click="handleClick('shop')" class="link">OUR STORE</a>
-      <a @click="handleClick('contacts')" class="link">CONTACTS</a>
+      <a @click="handleClick('/')" class="link">home</a>
+      <a @click="handleClick('about')" class="link">about</a>
+      <a @click="handleClick('shop')" class="link">our store</a>
+      <a @click="handleClick('contact-us')" class="link">contact us</a>
     </nav>
   </div>
 </template>
@@ -85,10 +85,14 @@ export default {
   .navigate {
     margin-top: 30px;
     display: flex;
-    margin-left: 5px;
+    margin-left: 10px;
     flex-direction: column;
     align-items: flex-end;
     width: 100px;
+
+    & > * {
+      text-transform: uppercase;
+    }
 
     & > *:not(:last-child) {
       margin-bottom: 20px;
@@ -114,7 +118,7 @@ export default {
 }
 
 .navigation__hidden {
-  right: -105px;
+  right: -115px;
   height: 50px;
 }
 </style>
