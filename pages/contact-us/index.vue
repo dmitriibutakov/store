@@ -1,7 +1,8 @@
 <template>
-<div class="contactUs__block">
-  <v-form-contact-us/>
-</div>
+  <div class="contactUs__block">
+    <v-form-contact-us/>
+    <v-contact-us/>
+  </div>
 </template>
 
 <script>
@@ -11,6 +12,8 @@
 <style scoped lang="scss">
 .contactUs__block {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
 }
 </style>

@@ -12,7 +12,7 @@
                @customChange="handleCustomChange"
                :placeholder="data"/>
     </form>
-    <v-button @onClick="sendClick">send</v-button>
+    <v-button @onClick="sendClick">send message</v-button>
 
   </div>
 </template>
