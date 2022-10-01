@@ -46,15 +46,16 @@ export default {
 
 .product {
   display: flex;
+  flex: 0 0 284px;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   margin: 10px;
   padding: 20px;
-  max-width: 320px;
   border-radius: 18px;
   transition: all .4s ease-in-out;
   box-shadow: 2px 4px 12px rgba(0, 0, 0, .08);
+
 
   & > * {
     margin-bottom: 10px;
