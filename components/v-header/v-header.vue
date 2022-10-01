@@ -5,7 +5,7 @@
       <nuxt-link to="/">Store.</nuxt-link>
     </h1>
     <nuxt-link to="cart" class="cart">
-      <div class="cart__indicator">{{ getCart.length }}</div>
+      <div class="cart__indicator">{{ getQuantityCart }}</div>
       <img class="header__icon" src="/images/icons/cart.png" alt="cart">
     </nuxt-link>
   </header>
@@ -16,7 +16,7 @@ import {mapGetters} from "vuex";
 
 export default {
   computed: {
-    ...mapGetters({getCart: "getCart"})
+    ...mapGetters({getQuantityCart: "getQuantityCart", getCart: "getCart"})
   },
 }
 </script>

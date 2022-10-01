@@ -2,6 +2,7 @@ export const state = () => ({
     shopFilters: ["All Products", "iPhone", "MacBook", "iPad", "Watch", "Accessories"],
     imagesFromProducts: [],
     portionProducts: [],
+    quantityCart: 0,
     products: [],
     about: [],
     cart: [],
@@ -34,7 +35,7 @@ export const actions = {
             commit(error)
         }
     },
-    async fetchAbout({commit, state}) {
+    async fetchAbout({commit}) {
         try {
             commit('SET_LOADING', true)
             let result;
@@ -84,14 +85,21 @@ export const actions = {
             if (!localStorage.hasOwnProperty(key)) {
                 continue;
             }
-            commit('SET_CART_FROM_STORAGE', localStorage.getItem(key))
+            let product = JSON.parse(localStorage.getItem(key))
+            if (typeof product === "object" && product !== null) {
+                let productQuantity = +localStorage.getItem(`${key} quantity`) || 1
+                commit('SET_QUANTITY_CART', productQuantity)
+                commit('SET_CART_FROM_STORAGE', product)
+            }
         }
     },
-    setCartToStorage({}, product) {
+    setCartToStorage({dispatch}, product) {
         localStorage.setItem(`${product.name}`, JSON.stringify(product))
+        dispatch("getCartFromStorage")
     },
-    setQuantityToStorage({}, {name, quantity}) {
+    setQuantityToStorage({dispatch}, {name, quantity}) {
         localStorage.setItem(`${name} quantity`, JSON.stringify(quantity))
+        dispatch("getCartFromStorage")
     },
     deleteCartFromStorage({dispatch}, key) {
         localStorage.removeItem(key)
@@ -107,6 +115,7 @@ export const getters = {
     getIsShowMenu: state => state.isShowMenu,
     getIsShowModal: state => state.isShowModal,
     getShopFilters: state => state.shopFilters,
+    getQuantityCart: state => state.quantityCart,
     getTotalSumCart: state => state.totalSumCart,
     getActiveFilter: state => state.activeFilter,
     getPortionNumber: state => state.portionNumber,
@@ -117,19 +126,17 @@ export const mutations = {
     SET_ABOUT: (state, about) => state.about = about,
     CLEAR_CART: state => {
         state.cart = []
+        state.quantityCart = 0
     },
     FETCH_INDEX: state => state.index++,
     SET_LOADING: (state, value) => state.loading = value,
     TOGGLE_MENU: (state) => state.isShowMenu = !state.isShowMenu,
-    SET_PRODUCTS: (state, products) => {
-        state.products = products
-    },
-    FETCH_SUM_CART: (state, number) => {
-        state.totalSumCart += number
-    },
+    SET_PRODUCTS: (state, products) => state.products = products,
+    FETCH_SUM_CART: (state, number) => state.totalSumCart += number,
     SET_IS_SHOW_MODAL: state => state.isShowModal = !state.isShowModal,
     SET_ACTIVE_FILTER: (state, filter) => state.activeFilter = filter,
     SET_PORTION_NUMBER: (state, num) => state.portionNumber = num,
+    SET_QUANTITY_CART: (state, sum) => state.quantityCart += sum,
     SET_PORTION_PRODUCTS: (state) => {
         state.portionNumber += 3
         if (state.activeFilter === "All Products") {
@@ -143,11 +150,7 @@ export const mutations = {
                 .slice(0, state.portionNumber)
         }
     },
-    SET_CART_FROM_STORAGE: (state, prod) => {
-        const item = JSON.parse(prod)
-        if (typeof (item) === "object" && item !== null) {
-            state.cart.push(item)
-        }
-    },
+    SET_CART_FROM_STORAGE: (state, product) => state.cart.push(product),
     SET_IMAGES_FROM_PRODUCTS: (state, image) => state.imagesFromProducts.push(image),
+
 }

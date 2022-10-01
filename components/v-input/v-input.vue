@@ -57,7 +57,7 @@ export default {
     font-size: 14px;
     padding: 10px 20px;
     border-radius: 20px;
-    min-width: 200px;
+    min-width: 150px;
 
     &:focus {
       border-color: #006edb;
