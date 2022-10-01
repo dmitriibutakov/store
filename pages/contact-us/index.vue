@@ -12,8 +12,7 @@
 <style scoped lang="scss">
 .contactUs__block {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

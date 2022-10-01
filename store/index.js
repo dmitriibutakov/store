@@ -12,7 +12,6 @@ export const state = () => ({
     portionNumber: 0,
     totalSumCart: 0,
     loading: false,
-    error: "",
     index: 999
 })
 export const actions = {

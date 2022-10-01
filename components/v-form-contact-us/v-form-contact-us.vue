@@ -54,6 +54,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
 
   .contacts__title {
     font-size: 24px;
