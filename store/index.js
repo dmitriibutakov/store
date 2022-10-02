@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const state = () => ({
     shopFilters: ["All Products", "iPhone", "MacBook", "iPad", "Watch", "Accessories"],
     imagesFromProducts: [],
@@ -47,6 +49,19 @@ export const actions = {
                 })
         } catch (error) {
             console.log(error)
+        }
+    },
+    async contactUs({commit, dispatch}, values) {
+        commit('SET_LOADING', true)
+        try {
+            await axios.post('https://server-istore.herokuapp.com/contactUs', {
+                ...values
+            })
+        } catch (e) {
+            console.log(e)
+        } finally {
+            commit('SET_LOADING', false)
+            dispatch("toggleModal")
         }
     },
     fetchPortionProducts({commit}) {
@@ -151,5 +166,4 @@ export const mutations = {
     },
     SET_CART_FROM_STORAGE: (state, product) => state.cart.push(product),
     SET_IMAGES_FROM_PRODUCTS: (state, image) => state.imagesFromProducts.push(image),
-
 }

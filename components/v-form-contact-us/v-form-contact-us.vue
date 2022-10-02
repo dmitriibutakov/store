@@ -4,47 +4,53 @@
     <p class="contacts__desc">
       Feel free to leave us a message. our support team will get in touch with you as soon as possible.
     </p>
-    <form class="contacts__form">
+    <form @submit.prevent="onSubmit" class="contacts__form">
       <v-input v-for="data in Object.keys(formData)"
                :error="formValidator[data]"
                :key="data"
                :title="data"
-               @customChange="handleCustomChange"
-               :placeholder="data"/>
+               @customChange="handleCustomChange"/>
+      <v-button :disabled="getLoading">send message</v-button>
     </form>
-    <v-button @onClick="sendClick">send message</v-button>
-
   </div>
 </template>
 
 <script>
 import {isValidFormInput} from "assets/isValidFormInput";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   data() {
     return {
       formData: {
-        Name: "",
-        Email: "",
-        Number: "",
-        Message: ""
+        name: "",
+        email: "",
+        number: "",
+        message: ""
       },
       formValidator: {
-        Name: "",
-        Email: "",
-        Number: "",
-        Message: ""
+        name: "",
+        email: "",
+        number: "",
+        message: ""
       }
     }
   },
+  computed: {
+    ...mapGetters({getLoading: "getLoading"})
+  },
   methods: {
-    sendClick() {
+    ...mapActions({contactUs: "contactUs"}),
+    onSubmit() {
       isValidFormInput(this.formData, this.formValidator)
+      if (Object.values(this.formData).every(el => el.length > 0)) {
+        this.contactUs(this.formData)
+      }
     },
     handleCustomChange(value, data) {
       this.formValidator[value] = ""
       this.formData[value] = data
-    },
+    }
   }
 }
 </script>

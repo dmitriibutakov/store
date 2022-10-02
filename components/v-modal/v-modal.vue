@@ -43,7 +43,10 @@ export default {
     padding: 25px 10px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 85vw;
+    min-height: 80vh;
     border-radius: 20px;
     background-color: white;
     scroll-behavior: auto;

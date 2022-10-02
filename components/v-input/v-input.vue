@@ -5,11 +5,9 @@
     </h6>
     <textarea v-if="title === 'Message'"
               @input="handleChange"
-              :placeholder="placeholder"
               :class="!error ? 'input__body' : 'input__body_error'"/>
     <input v-else :type="type || 'text'"
            @input="handleChange"
-           :placeholder="placeholder"
            :class="!error ? 'input__body' : 'input__body_error'">
 
     <p class="input__error">{{ error }}</p>
@@ -26,7 +24,7 @@ export default {
   },
   methods: {
     handleChange(event) {
-      this.$emit("customChange", this.placeholder, event.target.value)
+      this.$emit("customChange", this.title, event.target.value)
     },
   }
 }
@@ -38,10 +36,11 @@ export default {
   display: inline-block;
 
   .input__title {
+    text-transform: capitalize;
+    margin-bottom: 4px;
+    padding-left: 20px;
     font-size: 14px;
     color: #727272;
-    margin-bottom: 4px;
-    padding-left: 10px;
     line-height: 1.7;
   }
 

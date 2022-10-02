@@ -1,9 +1,9 @@
 <template>
-  <div class="products">
-    <v-product v-for="(prod, index) in products"
-               :product="prod"
-               :key="index"/>
-  </div>
+    <div class="products">
+      <v-product v-for="(prod, index) in products"
+                 :product="prod"
+                 :key="index"/>
+    </div>
 </template>
 
 <script>
@@ -15,19 +15,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.products {
-  padding: -10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-@media (min-width: 600px) {
   .products {
-    flex-direction: row;
+    display: flex;
     flex-wrap: wrap;
     align-items: stretch;
+    justify-content: center;
   }
-}
 </style>
