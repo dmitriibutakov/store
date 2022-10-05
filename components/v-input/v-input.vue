@@ -65,8 +65,9 @@ export default {
 
   .input__error {
     font-size: 14px;
+    font-weight: 400;
     position: absolute;
-    bottom: -15px;
+    bottom: -17px;
     transform: translateX(77%);
     color: #8f2121;
   }

@@ -23,7 +23,6 @@
       <button class="cart__remove" @click="()=>{
         removeItem(data.name)
         removeItem(`${data.name} quantity`)
-
       }">
         <img src="images/icons/delete.png" alt="delete" data-not-lazy>
       </button>

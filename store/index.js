@@ -13,6 +13,7 @@ export const state = () => ({
     isShowModal: false,
     portionNumber: 0,
     totalSumCart: 0,
+    isPaying: false,
     loading: false,
     index: 999
 })
@@ -62,6 +63,16 @@ export const actions = {
         } finally {
             commit('SET_LOADING', false)
             dispatch("toggleModal")
+        }
+    },
+     showPaying({commit}) {
+        commit('SET_LOADING', true)
+        try {
+            commit('SET_SHOW_PAYING', true)
+        } catch (e) {
+            console.log(e)
+        } finally {
+            commit('SET_LOADING', false)
         }
     },
     fetchPortionProducts({commit}) {
@@ -125,6 +136,7 @@ export const getters = {
     getIndex: state => state.index,
     getAbout: state => state.about,
     getLoading: state => state.loading,
+    getIsPaying: state => state.isPaying,
     getProducts: state => state.products,
     getIsShowMenu: state => state.isShowMenu,
     getIsShowModal: state => state.isShowModal,
@@ -143,6 +155,7 @@ export const mutations = {
         state.quantityCart = 0
     },
     FETCH_INDEX: state => state.index++,
+    SET_SHOW_PAYING: (state, isShow) => state.isPaying = isShow,
     SET_LOADING: (state, value) => state.loading = value,
     TOGGLE_MENU: (state) => state.isShowMenu = !state.isShowMenu,
     SET_PRODUCTS: (state, products) => state.products = products,
