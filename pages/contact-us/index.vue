@@ -1,12 +1,10 @@
 <template>
   <div class="contactUs__block">
-    <v-modal :title="'Your message has been sent successfully'"
-             v-if="getIsShowModal">
-      <img class="contactUs_successful" src="images/successful.gif" alt="successfully">
-      <v-button @onClick="returnClick" :name="'to main'"/>
-    </v-modal>
-    <v-preloader :opacity="true" v-else-if="getLoading"/>
-    <v-form-contact-us/>
+    <v-modal-successfull
+        :title="'Your order has been sent successfully'"
+        :img="'images/successful.gif'"/>
+    <v-preloader :opacity="true" v-if="getLoading"/>
+    <v-contact-us-form/>
     <v-contact-us/>
   </div>
 </template>
@@ -16,15 +14,10 @@ import {mapActions, mapGetters} from "vuex";
 
 export default {
   computed: {
-    ...mapGetters({getLoading: "getLoading", getIsShowModal: "getIsShowModal"})
+    ...mapGetters({getLoading: "getLoading"})
   },
   methods: {
     ...mapActions({toggleModal: "toggleModal"}),
-    returnClick() {
-
-      this.$router.push('/')
-      this.toggleModal()
-    }
   }
 }
 </script>
@@ -34,10 +27,5 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  .contactUs_successful {
-    width: 200px;
-
-  }
 }
 </style>

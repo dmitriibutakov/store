@@ -1,7 +1,6 @@
 <template>
   <div class="contacts__block">
     <h2 class="contacts__title">Contacts</h2>
-
     <div class="contacts__info">
       <p class="contacts__desc">Telephone:
         <a href="tel:+995-55-54321" class="contacts__link">
@@ -27,14 +26,12 @@ export default {}
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   .contacts__title {
     font-size: 24px;
     color: #006edb;
     font-weight: 600;
     margin: 10px 0;
   }
-
   .contacts__info {
     border: 1px solid rgba(134, 133, 133, 0.48);
     border-radius: 20px;

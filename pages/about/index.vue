@@ -5,8 +5,7 @@
                      :about="data.about"
                      :description="data.description"
                      :image="data.image"
-                     :screen="data.blackTheme"
-    />
+                     :screen="data.blackTheme"/>
   </div>
 </template>
 

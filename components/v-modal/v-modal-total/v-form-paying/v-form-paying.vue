@@ -1,19 +1,19 @@
 <template>
   <form @submit.prevent="onSubmit" class="billing__pay">
-      <v-input v-for="data in Object.keys(formData)"
-               :error="formValidator[data]"
-               :key="data"
-               :title="data"
-               @customChange="handleCustomChange"/>
+    <v-input v-for="data in Object.keys(formData)"
+             :error="formValidator[data]"
+             :key="data"
+             :title="data"
+             @customChange="handleCustomChange"/>
     <div class="btn">
-    <v-button :disabled="getLoading">place order</v-button>
+      <v-button :disabled="getLoading">place order</v-button>
     </div>
   </form>
 </template>
 
 <script>
 import {isValidFormInput} from "assets/isValidFormInput";
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   data() {
@@ -34,10 +34,11 @@ export default {
     ...mapGetters({getLoading: "getLoading"})
   },
   methods: {
+    ...mapActions({sendPaying: "sendPaying"}),
     onSubmit() {
       isValidFormInput(this.formData, this.formValidator)
       if (Object.values(this.formData).every(el => el.length > 0)) {
-        this.showPaying()
+        this.sendPaying()
       }
     },
     handleCustomChange(value, data) {
@@ -58,6 +59,9 @@ export default {
   font-weight: 400;
   border: 1px solid rgba(134, 133, 133, 0.48);
   border-radius: 20px;
+  & > * {
+    margin: 5px 0;
+  }
   .btn {
     margin-top: 20px;
   }

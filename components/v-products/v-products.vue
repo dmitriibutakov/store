@@ -14,7 +14,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
   .products {
     display: flex;
     flex-wrap: wrap;

@@ -1,4 +1,4 @@
-¬
+
 <template>
   <header class="header">
     <h1 class="header__name">
@@ -29,16 +29,13 @@ export default {
   display: flex;
   justify-content: space-between;
   z-index: 2;
-
   .header__name {
     font-size: 24px;
     font-weight: 700;
   }
-
   .cart {
     position: relative;
     margin-right: 55px;
-
     .cart__indicator {
       display: flex;
       align-items: center;
@@ -54,7 +51,6 @@ export default {
       bottom: -5px;
     }
   }
-
   .header__icon {
     height: 25px;
     width: 25px;

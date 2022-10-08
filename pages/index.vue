@@ -27,6 +27,7 @@ export default {
   },
 }
 </script>
+
 <style lang="scss" scoped>
 .greeting__page {
   padding: 0 5px;
@@ -34,22 +35,18 @@ export default {
   flex-flow: wrap;
   justify-content: center;
   align-items: center;
-
   .greeting__carousel {
     order: 2;
   }
-
   & > *:not(:last-child) {
     margin-bottom: 20px;
   }
-
   .greeting__title {
     order: 1;
     margin-top: 40px;
     font-size: 28px;
     font-weight: 700;
   }
-
   .greeting__about {
     order: 3;
     color: #6e6e73;
@@ -59,31 +56,22 @@ export default {
     width: 100%;
   }
 }
-
-@media (min-width: 600px) {
-
-}
-
 @media (min-width: 800px) {
   .greeting__page {
     flex-flow: row;
     justify-content: center;
     width: 100%;
-
     & > *:not(:last-child) {
       margin: 0 30px 0 0;
     }
-
     .greeting__title {
       order: 1;
       max-width: 300px;
     }
-
     .greeting__about {
       order: 3;
       width: max-content;
     }
-
     .greeting__carousel {
       order: 2;
     }

@@ -45,21 +45,17 @@ export default {
   width: calc(100% + 20px);
   height: 100vh;
   overflow: hidden;
-
   .screen__text {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     & > *:not(:last-child) {
       margin-bottom: 13px;
     }
-
     .screen__title {
       font-size: 24px;
       font-weight: 600;
     }
-
     .screen__about,
     .screen2__about {
       color: transparent;
@@ -68,25 +64,20 @@ export default {
       background-clip: text;
       padding: 0 10px;
     }
-
     .screen__about {
       background-image: linear-gradient(180deg, #ffb6ff, #b344ff);
     }
-
     .screen2__about {
       background-image: linear-gradient(90deg, #2ca2b4, #5598de 24%, #7f87ff 45%, #f65aad 76%, #ec3d43);
     }
-
     .screen__description {
       font-size: 21px;
       margin-bottom: 20px;
     }
-
     .screen__link {
       color: #fff;
     }
   }
-
   .screen__img {
     bottom: 0;
     width: 100%;
@@ -96,12 +87,10 @@ export default {
     min-height: 250px;
   }
 }
-
 .screen {
   color: #f5f5f7;
   background-color: #000;
 }
-
 .screen2 {
   background-color: #fff;
 }

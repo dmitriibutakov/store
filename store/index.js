@@ -65,7 +65,16 @@ export const actions = {
             dispatch("toggleModal")
         }
     },
-     showPaying({commit}) {
+    async sendPaying({commit}) {
+        try {
+            commit('SET_LOADING', true)
+        } catch (e) {
+            console.log(e)
+        } finally {
+            setTimeout(() => commit('SET_LOADING', false), 3000)
+        }
+    },
+    showPaying({commit}) {
         commit('SET_LOADING', true)
         try {
             commit('SET_SHOW_PAYING', true)
@@ -75,6 +84,7 @@ export const actions = {
             commit('SET_LOADING', false)
         }
     },
+
     fetchPortionProducts({commit}) {
         commit('SET_PORTION_PRODUCTS')
     },

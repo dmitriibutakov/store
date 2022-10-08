@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Button from '../v-button/v-button.vue';
+import Button from '../../v-button/v-button.vue';
 import {mapActions} from "vuex";
 
 export default {
@@ -42,11 +42,11 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 
 .product {
   display: flex;
-  flex: 0 0 284px;
+  flex: 0 0 250px;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -55,43 +55,35 @@ export default {
   border-radius: 18px;
   transition: all .4s ease-in-out;
   box-shadow: 2px 4px 12px rgba(0, 0, 0, .08);
-
-
   & > * {
     margin-bottom: 10px;
   }
-
   &:hover {
     box-shadow: 2px 4px 16px rgba(0, 0, 0, .16);
     transform: scale3d(1.01, 1.01, 1.01);
   }
-
   .product__img {
     width: 100%;
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
-
     img {
       margin: 0 auto;
       height: 200px;
       width: 200px;
     }
   }
-
   .product__name {
     margin-bottom: 20px;
     font-size: 20px;
     font-weight: 700;
     color: #1d1d1f;
   }
-
   .product__about {
     font-weight: 500;
     color: #464646;
     font-size: 12px;
   }
-
   .product__price {
     position: relative;
     display: flex;
@@ -101,7 +93,6 @@ export default {
     font-size: 14px;
     color: #1d1d1f;
     opacity: .9;
-
     .dot {
       position: absolute;
       right: -5px;
@@ -109,7 +100,6 @@ export default {
       color: #006edb;
       animation: blick 2s ease-in-out;
     }
-
     @keyframes blick {
       0% {
         opacity: 0;

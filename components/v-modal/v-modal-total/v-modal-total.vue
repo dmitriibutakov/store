@@ -8,7 +8,9 @@
           <span class="total__number"> {{ getTotalSumCart }} $</span>
         </h3>
       </div>
-      <v-form-paying v-show="getIsPaying"/>
+      <transition name="background">
+        <v-form-paying v-show="getIsPaying"/>
+      </transition>
     </div>
   </div>
 </template>
@@ -21,7 +23,7 @@ export default {
     ...mapGetters({
       getTotalSumCart: "getTotalSumCart",
       getCart: "getCart",
-      getIsPaying: "getIsPaying"
+      getIsPaying: "getIsPaying",
     })
   },
 }
@@ -33,35 +35,36 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.total__billing {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-
-
-  .billing__block {
-    margin: 10px 10px 10px 0;
+  .total__billing {
     display: flex;
-    flex-direction: column;
-    width: 220px;
-    padding: 10px;
-    font-weight: 400;
-    border: 1px solid rgba(134, 133, 133, 0.48);
-    border-radius: 20px;
-  }
-
-  .total__sum {
-    padding-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    width: 220px;
-    font-weight: 400;
-    border-top: 1px solid rgba(134, 133, 133, 0.48);
+    align-items: flex-start;
+    justify-content: center;
+    .background-enter-active, .background-leave-active {
+      transition: opacity .5s;
+    }
+    .background-enter, .background-leave-to {
+      opacity: 0;
+    }
+    .billing__block {
+      margin: 10px 10px 10px 0;
+      display: flex;
+      flex-direction: column;
+      width: 220px;
+      padding: 10px;
+      font-weight: 400;
+      border: 1px solid rgba(134, 133, 133, 0.48);
+      border-radius: 20px;
+    }
+    .total__sum {
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      width: 220px;
+      font-weight: 400;
+      border-top: 1px solid rgba(134, 133, 133, 0.48);
+    }
   }
 }
-
 @media (max-width: 821px) {
   .total__billing {
     flex-direction: column;

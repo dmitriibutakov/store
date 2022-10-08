@@ -6,7 +6,7 @@
              :title="data"
              @customChange="handleCustomChange"/>
     <div>
-      <v-button :disabled="getLoading || getIsPaying">show paying method</v-button>
+      <v-button :disabled="getLoading">paying method</v-button>
     </div>
   </form>
 </template>
@@ -33,7 +33,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({getLoading: "getLoading", getIsPaying:"getIsPaying"})
+    ...mapGetters({getLoading: "getLoading", getIsPaying: "getIsPaying"})
   },
   methods: {
     ...mapActions({showPaying: "showPaying"}),
@@ -54,7 +54,6 @@ export default {
 <style scoped lang="scss">
 .total__inputs {
   margin: -10px;
-
   & > * {
     margin: 10px;
   }

@@ -14,14 +14,11 @@
   align-items: center;
   padding: 20px 0;
   font-size: 14px;
-
   & > :first-child {
     margin-right: 10px;
   }
-
   .footer__link, .footer__nuxtlink {
     transition: all 300ms ease-in;
-
     &:hover {
       opacity: .8;
       color: #006edb;
