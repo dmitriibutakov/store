@@ -1,6 +1,6 @@
 <template>
-  <div class="total__block">
-    <v-form-order/>
+  <div v-else class="total__block">
+    <v-form-order @showPayingWindow="setShowPaying"/>
     <div class="total__billing">
       <div class="billing__block">
         <v-billing-total v-for="data in getCart" :key="data.name" :product="data"/>
@@ -9,7 +9,7 @@
         </h3>
       </div>
       <transition name="background">
-        <v-form-paying v-show="getIsPaying"/>
+        <v-form-paying v-show="showPaying"/>
       </transition>
     </div>
   </div>
@@ -19,13 +19,22 @@
 import {mapGetters} from "vuex";
 
 export default {
+  data() {
+    return {
+      showPaying: false
+    }
+  },
   computed: {
     ...mapGetters({
       getTotalSumCart: "getTotalSumCart",
       getCart: "getCart",
-      getIsPaying: "getIsPaying",
     })
   },
+  methods: {
+    setShowPaying() {
+      this.showPaying = !this.showPaying
+    }
+  }
 }
 </script>
 

@@ -1,7 +1,8 @@
 <template>
   <transition name="background">
    <div @click.stop="toggleModal" class="modal__background">
-    <div @click.stop class="modal__block">
+     <v-preloader :opacity="true" v-if="getLoading"/>
+     <div @click.stop class="modal__block">
       <button @click="toggleModal" class="modal__close">&#215;</button>
       <h1 class="modal__title">{{ title }}</h1>
       <slot></slot>
@@ -18,10 +19,7 @@ export default {
     title: String
   },
   computed: {
-    ...mapGetters({
-      getIsShowModal: "getIsShowModal",
-      getLoading: "getLoading"
-    })
+    ...mapGetters({getLoading: "getLoading"})
   },
   methods: {
     ...mapActions({toggleModal: "toggleModal"})

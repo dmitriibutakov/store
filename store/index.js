@@ -71,17 +71,10 @@ export const actions = {
         } catch (e) {
             console.log(e)
         } finally {
-            setTimeout(() => commit('SET_LOADING', false), 3000)
-        }
-    },
-    showPaying({commit}) {
-        commit('SET_LOADING', true)
-        try {
-            commit('SET_SHOW_PAYING', true)
-        } catch (e) {
-            console.log(e)
-        } finally {
-            commit('SET_LOADING', false)
+            setTimeout(() => {
+                commit('SET_LOADING', false)
+                commit('SET_IS_PAYING')
+            }, 3000)
         }
     },
 
@@ -165,7 +158,7 @@ export const mutations = {
         state.quantityCart = 0
     },
     FETCH_INDEX: state => state.index++,
-    SET_SHOW_PAYING: (state, isShow) => state.isPaying = isShow,
+    SET_IS_PAYING: (state) => state.isPaying = !state.isPaying,
     SET_LOADING: (state, value) => state.loading = value,
     TOGGLE_MENU: (state) => state.isShowMenu = !state.isShowMenu,
     SET_PRODUCTS: (state, products) => state.products = products,

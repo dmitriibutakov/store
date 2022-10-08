@@ -1,5 +1,6 @@
 <template>
   <div class="cart">
+    {{getIsPaying}}
     <transition name="background">
       <v-modal v-if="getIsShowModal" :title="'Billing details:'">
         <v-modal-total/>
@@ -27,7 +28,7 @@ export default {
       getIndex: "getIndex",
       getIsShowModal: "getIsShowModal",
       getTotalSumCart: "getTotalSumCart",
-      getLoading: "getLoading"
+      getLoading: "getLoading",
     })
   },
   methods: {

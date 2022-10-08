@@ -41,6 +41,7 @@ export default {
       isValidFormInput(this.formData, this.formValidator)
       if (Object.values(this.formData).every(el => el.length > 0)) {
         this.showPaying()
+        this.$emit("showPayingWindow")
       }
     },
     handleCustomChange(value, data) {
