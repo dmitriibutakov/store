@@ -1,12 +1,12 @@
 <template>
-  <div class="shopPage__menu_item"
+  <div class="shop__menu_item"
        @click.stop="toggleMenu">{{ activeVariant }}
-    <ul class="shopPage__filter"
+    <ul class="shop__filter"
         v-if="getIsShowMenu">
       <li @click.stop
-          v-for="(data, index) in listVariants"
-          :key="index" @click="(event) => setFilteredProducts(event)"
-          class="shopPage__filter_item">{{ data }}
+          v-for="(v, i) in listVariants"
+          :key="i" @click="(event) => setFilteredProducts(event)"
+          class="shop__filter_item">{{ v }}
       </li>
     </ul>
   </div>
@@ -16,31 +16,30 @@
 import {mapActions, mapGetters} from "vuex";
 
 export default {
+  name: "VMenuList",
   props: {
-    listVariants: Array,
-    activeVariant: String
+    listVariants: {type: Array, required: true},
+    activeVariant: {type: String, required: true}
   },
   computed: {
-    ...mapGetters({getIsShowMenu: "getIsShowMenu"})
+    ...mapGetters(["getIsShowMenu"])
   },
   methods: {
-    ...mapActions({
-      setFilteredProducts: "setFilteredProducts",
-      toggleMenu: "toggleMenu"
-    }),
+    ...mapActions(["setFilteredProducts", "toggleMenu"]),
   },
 }
 </script>
 
 <style scoped lang="scss">
-.shopPage__menu_item {
+.shop__menu_item {
   padding: 5px 10px;
   width: 100px;
   position: relative;
   cursor: pointer;
   background-color: rgba(220, 220, 220, 0.75);
   color: #3a3a3a;
-  .shopPage__filter {
+
+  .shop__filter {
     position: absolute;
     width: 100%;
     background-color: #fff;
@@ -48,9 +47,11 @@ export default {
     left: 0;
     color: #6e6e73;
     z-index: 2;
-    .shopPage__filter_item {
+
+    .shop__filter_item {
       width: calc(100% - 10px);
       padding: 5px 0 5px 10px;
+
       &:hover {
         background-color: #006edb;
         color: #fff;

@@ -1,13 +1,16 @@
 <template>
     <div class="products">
-      <v-product v-for="(prod, index) in products"
-                 :product="prod"
-                 :key="index"/>
+      <v-product v-for="(v, i) in products"
+                 :product="v"
+                 :key="i"/>
     </div>
 </template>
 
 <script>
+import VProduct from "@/components/v-products/v-product";
 export default {
+  name: "VProducts",
+  components: {VProduct},
   props: {
     products: Array
   },

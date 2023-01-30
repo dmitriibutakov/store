@@ -1,9 +1,11 @@
 <template>
   <form @submit.prevent="onSubmit" class="total__inputs">
-    <v-input v-for="data in Object.keys(formData)"
-             :error="formValidator[data]"
-             :key="data"
-             :title="data"
+    <v-input v-for="v in Object.keys(formData)"
+             :error="formValidator[v]"
+             :key="v"
+             :name="v"
+             :input-value="formData[v]"
+             :placeholder="v"
              @customChange="handleCustomChange"/>
     <div>
       <v-button :disabled="getLoading">paying method</v-button>
@@ -19,15 +21,15 @@ export default {
   data() {
     return {
       formData: {
-        'full name': "",
+        'Full name': "",
         'Passport number': "",
-        'address': "",
+        'Address': "",
         'Mobile number': ""
       },
       formValidator: {
-        'full name': "",
+        'Full name': "",
         'Passport number': "",
-        'address': "",
+        'Address': "",
         'Mobile number': ""
       }
     }

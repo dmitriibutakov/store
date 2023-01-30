@@ -1,9 +1,8 @@
-
 <template>
   <header class="header">
-    <h1 class="header__name">
+    <h2 class="header__name">
       <nuxt-link to="/">Store.</nuxt-link>
-    </h1>
+    </h2>
     <nuxt-link to="cart" class="cart">
       <div class="cart__indicator">{{ getQuantityCart }}</div>
       <img class="header__icon" src="/images/icons/cart.png" alt="cart">
@@ -15,8 +14,9 @@
 import {mapGetters} from "vuex";
 
 export default {
+  name: "VHeader",
   computed: {
-    ...mapGetters({getQuantityCart: "getQuantityCart", getCart: "getCart"})
+    ...mapGetters(["getQuantityCart", "getCart"])
   },
 }
 </script>
@@ -29,13 +29,16 @@ export default {
   display: flex;
   justify-content: space-between;
   z-index: 2;
+
   .header__name {
     font-size: 24px;
     font-weight: 700;
   }
+
   .cart {
     position: relative;
     margin-right: 55px;
+
     .cart__indicator {
       display: flex;
       align-items: center;
@@ -51,6 +54,7 @@ export default {
       bottom: -5px;
     }
   }
+
   .header__icon {
     height: 25px;
     width: 25px;

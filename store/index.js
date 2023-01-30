@@ -135,51 +135,51 @@ export const actions = {
     },
 }
 export const getters = {
-    getCart: state => state.cart,
-    getIndex: state => state.index,
-    getAbout: state => state.about,
-    getLoading: state => state.loading,
-    getIsPaying: state => state.isPaying,
-    getProducts: state => state.products,
-    getIsShowMenu: state => state.isShowMenu,
-    getIsShowModal: state => state.isShowModal,
-    getShopFilters: state => state.shopFilters,
-    getQuantityCart: state => state.quantityCart,
-    getTotalSumCart: state => state.totalSumCart,
-    getActiveFilter: state => state.activeFilter,
-    getPortionNumber: state => state.portionNumber,
-    getPortionProducts: state => state.portionProducts,
-    getImagesFromProducts: state => state.imagesFromProducts,
+    getCart: s => s.cart,
+    getIndex: s => s.index,
+    getAbout: s => s.about,
+    getLoading: s => s.loading,
+    getIsPaying: s => s.isPaying,
+    getProducts: s => s.products,
+    getIsShowMenu: s => s.isShowMenu,
+    getIsShowModal: s => s.isShowModal,
+    getShopFilters: s => s.shopFilters,
+    getQuantityCart: s => s.quantityCart,
+    getTotalSumCart: s => s.totalSumCart,
+    getActiveFilter: s => s.activeFilter,
+    getPortionNumber: s => s.portionNumber,
+    getPortionProducts: s => s.portionProducts,
+    getImagesFromProducts: s => s.imagesFromProducts,
 }
 export const mutations = {
-    SET_ABOUT: (state, about) => state.about = about,
-    CLEAR_CART: state => {
-        state.cart = []
-        state.quantityCart = 0
+    SET_ABOUT: (s, about) => s.about = about,
+    CLEAR_CART: s => {
+        s.cart = []
+        s.quantityCart = 0
     },
-    FETCH_INDEX: state => state.index++,
-    SET_IS_PAYING: (state) => state.isPaying = !state.isPaying,
-    SET_LOADING: (state, value) => state.loading = value,
-    TOGGLE_MENU: (state) => state.isShowMenu = !state.isShowMenu,
-    SET_PRODUCTS: (state, products) => state.products = products,
-    FETCH_SUM_CART: (state, number) => state.totalSumCart += number,
-    SET_IS_SHOW_MODAL: state => state.isShowModal = !state.isShowModal,
-    SET_ACTIVE_FILTER: (state, filter) => state.activeFilter = filter,
-    SET_PORTION_NUMBER: (state, num) => state.portionNumber = num,
-    SET_QUANTITY_CART: (state, sum) => state.quantityCart += sum,
-    SET_PORTION_PRODUCTS: (state) => {
-        state.portionNumber += 3
-        if (state.activeFilter === "All Products") {
-            state.portionProducts = state.products
-                .slice(0, state.portionNumber)
+    FETCH_INDEX: s => s.index++,
+    SET_IS_PAYING: (s) => s.isPaying = !s.isPaying,
+    SET_LOADING: (s, value) => state.loading = value,
+    TOGGLE_MENU: (s) => s.isShowMenu = !s.isShowMenu,
+    SET_PRODUCTS: (s, products) => s.products = products,
+    FETCH_SUM_CART: (s, number) => s.totalSumCart += number,
+    SET_IS_SHOW_MODAL: s => s.isShowModal = !s.isShowModal,
+    SET_ACTIVE_FILTER: (s, filter) => s.activeFilter = filter,
+    SET_PORTION_NUMBER: (s, num) => s.portionNumber = num,
+    SET_QUANTITY_CART: (s, sum) => s.quantityCart += sum,
+    SET_PORTION_PRODUCTS: (s) => {
+        s.portionNumber += 3
+        if (s.activeFilter === "All Products") {
+            s.portionProducts = s.products
+                .slice(0, s.portionNumber)
 
         } else {
-            state.portionProducts = state.products
+            s.portionProducts = s.products
                 .filter(el => el.filter
-                    .includes(state.activeFilter.toLowerCase()))
-                .slice(0, state.portionNumber)
+                    .includes(s.activeFilter.toLowerCase()))
+                .slice(0, s.portionNumber)
         }
     },
-    SET_CART_FROM_STORAGE: (state, product) => state.cart.push(product),
-    SET_IMAGES_FROM_PRODUCTS: (state, image) => state.imagesFromProducts.push(image),
+    SET_CART_FROM_STORAGE: (s, product) => s.cart.push(product),
+    SET_IMAGES_FROM_PRODUCTS: (s, image) => s.imagesFromProducts.push(image),
 }

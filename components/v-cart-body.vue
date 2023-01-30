@@ -34,20 +34,15 @@
 import {mapActions, mapGetters} from "vuex";
 
 export default {
+  name: "VCartBody",
   props: {
     getCart: Array
   },
   computed: {
-    ...mapGetters({
-      getIndex: "getIndex",
-    }),
+    ...mapGetters(["getIndex"]),
   },
   methods: {
-    ...mapActions({
-      deleteCartFromStorage: "deleteCartFromStorage",
-      getQuantityFromStorage: "getQuantityFromStorage",
-      fetchSumCart: "fetchSumCart"
-    }),
+    ...mapActions(["deleteCartFromStorage", "getQuantityFromStorage", "fetchSumCart"]),
     removeItem(key) {
       this.deleteCartFromStorage(key)
       this.fetchSumCart(this.getCart)
@@ -64,6 +59,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
+
   .cart__empty {
     margin: 0 auto 30px auto;
     color: transparent;
@@ -72,30 +68,37 @@ export default {
     font-size: 24px;
     background-image: linear-gradient(90deg, #2ca2b4, #5598de 24%, #7f87ff 45%, #f65aad 76%, #ec3d43);
   }
+
   .cart__card {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     & > *:not(:last-child) {
       display: flex;
       justify-content: flex-start;
       flex: 0 0 19%;
     }
+
     & > :last-child {
       flex: 0 0 10%;
     }
+
     .cart__product_name {
       max-width: 400px;
       font-weight: 500;
     }
   }
+
   .cart__img {
     img {
       height: 50px;
     }
   }
+
   .cart__remove {
     cursor: pointer;
+
     img {
       height: 24px;
       width: 24px;

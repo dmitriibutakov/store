@@ -49,7 +49,7 @@ export default {
     align-items: flex-start;
     justify-content: center;
     .background-enter-active, .background-leave-active {
-      transition: opacity .5s;
+      transition: opacity .3s;
     }
     .background-enter, .background-leave-to {
       opacity: 0;

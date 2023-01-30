@@ -1,6 +1,5 @@
 <template>
   <div class="cart">
-    {{getIsPaying}}
     <transition name="background">
       <v-modal v-if="getIsShowModal" :title="'Billing details:'">
         <v-modal-total/>
@@ -23,20 +22,10 @@ import {mapActions, mapGetters} from "vuex";
 
 export default {
   computed: {
-    ...mapGetters({
-      getCart: "getCart",
-      getIndex: "getIndex",
-      getIsShowModal: "getIsShowModal",
-      getTotalSumCart: "getTotalSumCart",
-      getLoading: "getLoading",
-    })
+    ...mapGetters(["getCart", "getIndex", "getIsShowModal", "getTotalSumCart", "getLoading", 'getIsPaying'])
   },
   methods: {
-    ...mapActions({
-      getCartFromStorage: "getCartFromStorage",
-      fetchSumCart: "fetchSumCart",
-      toggleModal: "toggleModal"
-    }),
+    ...mapActions(["getCartFromStorage", "fetchSumCart", "toggleModal"]),
   },
   mounted() {
     this.getCartFromStorage()
@@ -52,24 +41,29 @@ export default {
   align-items: center;
   height: 100%;
   width: 100%;
+
   .background-enter-active, .background-leave-active {
-    transition: opacity .5s;
+    transition: opacity .3s;
   }
+
   .background-enter, .background-leave-to {
     opacity: 0;
   }
+
   & > * {
     max-width: 600px;
     font-size: 14px;
     line-height: 1.16667;
     font-weight: 600;
   }
+
   .cart__title {
     font-size: 34px;
     line-height: 1.1;
     font-weight: 600;
     margin-bottom: 40px;
   }
+
   .cart__total {
     border-top: 1px solid rgba(141, 141, 141, 0.374);
     padding-top: 10px;
@@ -77,11 +71,13 @@ export default {
     display: flex;
     width: 100%;
     justify-content: space-between;
+
     .cart__total_name {
       margin-right: 10px;
       font-weight: 500;
     }
   }
+
   .cart__button {
     margin-top: 20px;
     width: 100%;

@@ -1,5 +1,5 @@
 <template>
-  <div class="quantity__body">
+  <div class="quantity">
     <button @click="decreaseQuantity" class="quantity__btn">-</button>
     <span>{{ quantity }}</span>
     <button @click="increaseQuantity" class="quantity__btn">+</button>
@@ -10,9 +10,10 @@
 import {mapActions, mapGetters} from "vuex";
 
 export default {
+  name: "VQuantity",
   props: {
-    productName: String,
-    quantityStore: Number,
+    productName: {type: String, required: true},
+    quantityStore: {type: Number},
   },
   data() {
     return {
@@ -20,14 +21,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({getCart: "getCart"})
+    ...mapGetters(["getCart"])
   },
   methods: {
-    ...mapActions({
-      refreshCart: "refreshCart",
-      setQuantityToStorage: "setQuantityToStorage",
-      fetchSumCart: "fetchSumCart"
-    }),
+    ...mapActions(["refreshCart", "setQuantityToStorage", "fetchSumCart"]),
     decreaseQuantity() {
       if (this.quantity > 1) {
         this.quantity--
@@ -49,7 +46,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.quantity__body {
+.quantity {
   display: flex;
   font-size: 14px;
   align-items: center;
@@ -58,12 +55,16 @@ export default {
     margin-right: 5px;
   }
 
-  .quantity__btn {
-    width: 20px;
-    height: 20px;
-    border-radius: 99px;
+  &__btn {
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 100px;
     background-color: #006edb;
-    color: white;
+    color: #fff;
   }
 }
 </style>

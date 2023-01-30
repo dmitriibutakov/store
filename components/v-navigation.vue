@@ -9,7 +9,7 @@
       <a @click="handleClick('/')" class="link">home</a>
       <a @click="handleClick('about')" class="link">about</a>
       <a @click="handleClick('shop')" class="link">our store</a>
-      <a @click="handleClick('contact-us')" class="link">contact us</a>
+      <a @click="handleClick('contacts')" class="link">contacts</a>
     </nav>
   </div>
 </template>
@@ -17,6 +17,7 @@
 <script>
 
 export default {
+  name: "VNavigation",
   data() {
     return {
       active: false
@@ -36,11 +37,11 @@ export default {
 .navigation__hidden {
   position: fixed;
   z-index: 2;
-  top: 0px;
+  top: 0;
   display: flex;
   justify-content: flex-end;
-  transition: all 1s ease-in-out;
-  padding: 13px 15px 0px;
+  transition: all .3s ease-in;
+  padding: 13px 15px 0;
   height: 100%;
 
   .burger,
@@ -49,29 +50,24 @@ export default {
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 16px;
     cursor: pointer;
-    border-radius: 10px;
 
     span {
       width: 100%;
-      height: 3px;
-      transition: all 0.25s;
-      border-radius: 2px;
+      height: 2px;
+      transition: all .3s;
     }
   }
 
-  .burger span {
-    background-color: #000000c5;
-  }
-
+  .burger span,
   .burger__active span {
-    background-color: #8f2121;
+    background-color: #0e0e0e;
   }
 
   .burger__active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+    transform: translateY(5px) rotate(45deg);
   }
 
   .burger__active span:nth-child(2) {
@@ -99,21 +95,20 @@ export default {
     }
 
     .link {
-      color: inherit;
-      transition: all .5s ease;
+      transition: all .3s ease-in;
       font-weight: 600;
       cursor: pointer;
-    }
 
-    .link:hover {
-      color: #727272;
+      &:hover {
+        color: #006edb;
+      }
     }
   }
 }
 
 .navigation {
   right: 0;
-  background-color: rgba(255, 255, 255, 0.94);
+  background-color:#fff;
   border-left: 1px solid rgba(114, 112, 112, 0.4);
 }
 

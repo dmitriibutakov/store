@@ -5,9 +5,8 @@
 </template>
 <script>
 export default {
-  props: {
-    opacity: Boolean
-  }
+  name: "VPreloader",
+  props: {opacity: Boolean}
 }
 </script>
 <style scoped lang="scss">
@@ -18,6 +17,7 @@ export default {
   width: 100vw;
   height: 100vh;
   z-index: 1000;
+
   .preloader {
     display: block;
     position: relative;
@@ -32,6 +32,7 @@ export default {
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
   }
+
   .preloader:before {
     content: "";
     position: absolute;
@@ -45,6 +46,7 @@ export default {
     -webkit-animation: spin 3s linear infinite;
     animation: spin 3s linear infinite;
   }
+
   .preloader:after {
     content: "";
     position: absolute;
@@ -59,9 +61,11 @@ export default {
     animation: spin 1.5s linear infinite;
   }
 }
+
 .preloader__wrapper_opacity {
   background-color: rgba(114, 114, 114, 0.09);
 }
+
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);

@@ -2,19 +2,21 @@
   <transition v-if="getLoading" name="background">
     <v-preloader/>
   </transition>
-  <div class="shopPage" v-else>
+  <div class="shop" v-else>
     <v-menu-list :list-variants="getShopFilters" :active-variant="getActiveFilter"/>
     <v-products :products="getPortionProducts"/>
-    <button :disabled="getPortionProducts.length < getPortionNumber" class="shopPage__brn"
+    <v-button :disabled="getPortionProducts.length < getPortionNumber" class="shop__btn"
             @click="fetchPortionProducts">show more
-    </button>
+    </v-button>
   </div>
 </template>
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+import VProducts from "@/components/v-products/v-products";
 
 export default {
+  components: {VProducts},
   computed: {
     ...mapGetters({
       getLoading: "getLoading",
@@ -38,19 +40,19 @@ export default {
 .background-enter, .background-leave-to {
   opacity: 0;
 }
-.shopPage {
+.shop {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  .shopPage__brn {
+  &__btn {
     margin-top: 20px;
     background-color: #006edb;
     font-size: 17px;
     padding: 8px 16px;
     border-radius: 98px;
     color: #fff;
-    transition: all .4s ease-in-out;
+    transition: all .3s ease-in;
     &:disabled {
       background-color: rgb(92, 92, 92);
     }

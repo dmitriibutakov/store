@@ -1,13 +1,15 @@
 <template>
   <transition name="background">
-   <div @click.stop="toggleModal" class="modal__background">
-     <v-preloader :opacity="true" v-if="getLoading"/>
-     <div @click.stop class="modal__block">
-      <button @click="toggleModal" class="modal__close">&#215;</button>
-      <h1 class="modal__title">{{ title }}</h1>
-      <slot></slot>
+    <div class="modal__view" @click.stop="toggleModal">
+      <v-preloader :opacity="true" v-if="getLoading"/>
+      <div class="modal__block" @click.stop>
+        <div class="modal__close">
+          <button @click="toggleModal"/>
+        </div>
+        <h1 class="modal__title">{{ title }}</h1>
+        <slot/>
+      </div>
     </div>
-  </div>
   </transition>
 </template>
 
@@ -15,70 +17,67 @@
 import {mapActions, mapGetters} from "vuex";
 
 export default {
-  props: {
-    title: String
-  },
-  computed: {
-    ...mapGetters({getLoading: "getLoading"})
-  },
-  methods: {
-    ...mapActions({toggleModal: "toggleModal"})
-  }
+  name: "VModal",
+  props: {title: String, required: true},
+  computed: {...mapGetters({getLoading: "getLoading"})},
+  methods: {...mapActions({toggleModal: "toggleModal"})}
 }
 </script>
 
 <style scoped lang="scss">
 .background-enter-active, .background-leave-active {
-  transition: opacity .5s;
+  transition: opacity .3s;
 }
+
 .background-enter, .background-leave-to {
   opacity: 0;
 }
-.modal__background {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
+
+.modal__view {
+  position: fixed;
   left: 0;
   top: 0;
   min-width: 100%;
   min-height: 100%;
-  background-color: rgba(83, 83, 86, 0.3);
-  z-index: 9999;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2.5px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   .modal__block {
     position: relative;
-    margin: 10px;
-    padding: 25px 10px;
+    width: 100%;
+    max-width: 340px;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 10px;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 85vw;
-    min-height: 80vh;
-    border-radius: 20px;
-    background-color: white;
-    scroll-behavior: auto;
+    justify-content: center;
+
     .modal__close {
       position: absolute;
-      font-size: 18px;
-      right: 10px;
-      top: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #e82323;
-      color: white;
-      border-radius: 20px;
-      width: 24px;
-      height: 24px;
+      right: 16px;
+      top: 16px;
+
+      button {
+        background: url(@/assets/icons/close.svg);
+        width: 16px;
+        height: 16px;
+      }
     }
+
     .modal__title {
+      width: 100%;
+      text-align: left;
       font-size: 24px;
       font-weight: 600;
-      margin-bottom: 20px;
-    }
-    .modal__slot {
-      display: flex;
+      margin-bottom: 32px;
     }
   }
 }

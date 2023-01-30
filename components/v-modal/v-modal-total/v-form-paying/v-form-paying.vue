@@ -1,9 +1,11 @@
 <template>
   <form @submit.prevent="onSubmit" class="billing__pay">
-    <v-input v-for="data in Object.keys(formData)"
-             :error="formValidator[data]"
-             :key="data"
-             :title="data"
+    <v-input v-for="v in Object.keys(formData)"
+             :error="formValidator[v]"
+             :key="v"
+             :name="v"
+             :input-value="formData[v]"
+             :placeholder="v"
              @customChange="handleCustomChange"/>
     <div class="btn">
       <v-button :disabled="getLoading">place order</v-button>
@@ -19,14 +21,14 @@ export default {
   data() {
     return {
       formData: {
-        'card number': "",
-        'year issue': "",
-        'month issue': "",
+        'Card number': "",
+        'Year issue': "",
+        'Month issue': "",
       },
       formValidator: {
-        'card number': "",
-        'year issue': "",
-        'month issue': "",
+        'Card number': "",
+        'Year issue': "",
+        'Month issue': "",
       }
     }
   },
